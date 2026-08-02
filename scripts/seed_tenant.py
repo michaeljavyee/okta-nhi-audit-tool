@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
-"""Seed an Okta Developer Edition tenant with a deliberately messy NHI estate.
+"""Seed an Okta Integrator Free Plan tenant with a deliberately messy NHI estate.
 
     python scripts/seed_tenant.py --dry-run     # show what it would do
     python scripts/seed_tenant.py --confirm     # actually do it
 
 WHY THIS EXISTS: an audit tool that returns "no findings" demonstrates nothing.
-This builds a tenant resembling a 40-person startup that grew fast — the kind
-that has an orphaned Terraform token and a Super Admin service account — so the
-audit has real things to find, and so results are reproducible by anyone.
+This builds a tenant with the NHI problems a fast-growing startup accumulates —
+an orphaned Terraform token, a Super Admin service account — so the audit has
+real things to find, and so results are reproducible by anyone.
+
+THE 10-USER CEILING
+-------------------
+Okta Integrator Free Plan orgs allow a maximum of **10 active users**, and your
+own admin account is one of them. That is the binding constraint on this script,
+so the seeded scenario is deliberately small: a handful of humans and the five
+service accounts that actually produce findings.
+
+The demo fixtures used by `--demo` are not subject to this limit and model a
+larger, more realistic org. If you want the full 40-person picture, use `--demo`.
 
 READ THIS BEFORE RUNNING IT
 ---------------------------
@@ -15,9 +25,14 @@ This script WRITES. It is the only file in the repository that does, which is
 why it lives in scripts/ and not in src/, and why nothing under src/ imports it.
 CI enforces both of those boundaries.
 
-Run it against a throwaway Okta Developer Edition tenant and nothing else. It
-will refuse to run against an org URL that doesn't look like a dev org unless
-you pass --i-know-what-im-doing.
+Run it against a throwaway tenant and nothing else. It refuses to run against an
+org URL that doesn't look like a free/trial org unless you pass
+--i-know-what-im-doing.
+
+NOTE ON NAMING: "Okta Developer Edition" was retired in July 2025 and replaced by
+the Integrator Free Plan. New orgs are provisioned at integrator-1234567.okta.com
+rather than dev-1234567.okta.com. Both prefixes are accepted below, since older
+migrated orgs keep their original hostname.
 
 WHAT IT CANNOT DO
 -----------------
@@ -43,17 +58,18 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
-# Users
+# Integrator Free Plan orgs cap active users at 10, including your own admin
+# account. Everything below is budgeted against that.
+MAX_ACTIVE_USERS = 10
+
+# Human users are only here to give the service accounts something to contrast
+# against, so the list is short by default. --humans raises it if your org has
+# room. The service accounts are what actually produce findings.
 HUMANS = [
     ("Amara", "Okonkwo"), ("Ben", "Sorensen"), ("Chen", "Wei"),
     ("Dara", "Fitzgerald"), ("Elena", "Vasquez"), ("Femi", "Adeyemi"),
-    ("Grace", "Lindqvist"), ("Hassan", "Karimi"), ("Ingrid", "Bauer"),
-    ("Jonas", "Meyer"), ("Kavita", "Rao"), ("Liam", "ODonnell"),
-    ("Mei", "Tanaka"), ("Nadia", "Haddad"), ("Oscar", "Delgado"),
-    ("Priya", "Nair"), ("Quentin", "Boucher"), ("Rosa", "Marchetti"),
-    ("Samir", "Patel"), ("Tessa", "Nguyen"), ("Ulrich", "Schmitt"),
-    ("Vera", "Kowalski"), ("Xiomara", "Reyes"), ("Yusuf", "Demir"),
 ]
+DEFAULT_HUMANS = 2
 
 # The user who will be deactivated after creating an API token, producing the
 # orphaned-token finding.
@@ -83,9 +99,16 @@ EVENT_HOOK = {
 
 
 class Seeder:
-    def __init__(self, org_url: str, token: str, dry_run: bool = True) -> None:
+    def __init__(
+        self,
+        org_url: str,
+        token: str,
+        dry_run: bool = True,
+        human_count: int = DEFAULT_HUMANS,
+    ) -> None:
         self.org_url = org_url.rstrip("/")
         self.dry_run = dry_run
+        self.human_count = max(0, min(human_count, len(HUMANS)))
         self.session = requests.Session()
         self.session.headers.update(
             {
@@ -95,6 +118,59 @@ class Seeder:
             }
         )
         self.created: List[str] = []
+
+    def count_active_users(self) -> Optional[int]:
+        """How many active users already exist, for the 10-user budget check.
+
+        Returns None if we can't tell — the caller warns rather than blocks,
+        because a failed preflight shouldn't stop someone seeding a tenant they
+        know is empty.
+        """
+        response = self.session.get(
+            f"{self.org_url}/api/v1/users",
+            params={"filter": 'status eq "ACTIVE"', "limit": 200},
+            timeout=30,
+        )
+        if not response.ok:
+            return None
+        try:
+            return len(response.json())
+        except ValueError:
+            return None
+
+    def check_user_budget(self) -> bool:
+        """Warn before hitting the Integrator Free Plan ceiling mid-run.
+
+        Failing at user 7 of 9 leaves a half-seeded tenant that produces a
+        confusing audit, so it's worth checking up front.
+        """
+        planned = self.human_count + 1 + len(SERVICE_ACCOUNTS)  # +1 departing user
+        existing = self.count_active_users()
+
+        if existing is None:
+            print(
+                f"  could not read current user count; planning to create "
+                f"{planned} users (org limit is {MAX_ACTIVE_USERS} active)"
+            )
+            return True
+
+        total = existing + planned
+        print(f"  {existing} active users now, creating {planned} -> {total}")
+
+        if total > MAX_ACTIVE_USERS:
+            over = total - MAX_ACTIVE_USERS
+            print(
+                f"\n  ! This would exceed the {MAX_ACTIVE_USERS}-active-user limit "
+                f"on Integrator Free Plan orgs by {over}.\n"
+                f"    Okta will start rejecting user creation partway through, "
+                f"leaving a half-seeded tenant.\n"
+                f"    Options: rerun with --humans {max(0, self.human_count - over)}, "
+                f"or deactivate unused users first.\n"
+                f"    The five service accounts are what produce findings; the "
+                f"humans are only contrast.\n"
+            )
+            return False
+        return True
 
     def _request(
         self, method: str, path: str, payload: Optional[Dict[str, Any]] = None
@@ -205,8 +281,14 @@ class Seeder:
     # ------------------------------------------------------------------ driver
 
     def run(self) -> None:
-        print("\n1. Creating human users")
-        for first, last in HUMANS:
+        if not self.dry_run:
+            print("\n0. Checking the active-user budget")
+            if not self.check_user_budget():
+                print("Aborting before creating anything.")
+                return
+
+        print(f"\n1. Creating {self.human_count} human user(s)")
+        for first, last in HUMANS[: self.human_count]:
             login = f"{first.lower()}.{last.lower()}@example.com"
             self.create_user(first, last, login)
 
@@ -298,8 +380,8 @@ Then run the audit against the tenant:
 def _throwaway_password(login: str) -> str:
     """Deterministic throwaway password for a disposable dev tenant.
 
-    Not a secret and not pretending to be one — these accounts exist in a
-    developer org that should contain nothing real. Never reuse this pattern
+    Not a secret and not pretending to be one — these accounts exist in a free
+    throwaway org that should contain nothing real. Never reuse this pattern
     anywhere that matters.
     """
     import hashlib
@@ -311,9 +393,20 @@ def _throwaway_password(login: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Seed a THROWAWAY Okta Developer Edition tenant with a messy "
+            "Seed a THROWAWAY Okta Integrator Free Plan tenant with a messy "
             "non-human identity estate. This script performs write operations."
         )
+    )
+    parser.add_argument(
+        "--humans",
+        type=int,
+        default=DEFAULT_HUMANS,
+        help=(
+            f"how many ordinary human users to create (default {DEFAULT_HUMANS}, "
+            f"max {len(HUMANS)}). Integrator Free Plan orgs cap active users at "
+            f"{MAX_ACTIVE_USERS} including your own admin account, and the five "
+            "service accounts matter more than the humans."
+        ),
     )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument(
@@ -325,7 +418,10 @@ def main() -> int:
     parser.add_argument(
         "--i-know-what-im-doing",
         action="store_true",
-        help="permit running against an org URL that is not a dev-* org",
+        help=(
+            "permit running against an org URL that is not an integrator-*, "
+            "dev-*, trial-* or oktapreview.com org"
+        ),
     )
     args = parser.parse_args()
 
@@ -347,12 +443,18 @@ def main() -> int:
         )
         return 1
 
-    is_dev_org = "dev-" in org_url or "oktapreview.com" in org_url
-    if not is_dev_org and not args.i_know_what_im_doing:
+    # integrator-* is the current Integrator Free Plan format. dev-* covers orgs
+    # migrated from the retired Developer Edition. trial-* is a free trial org.
+    throwaway_markers = ("integrator-", "dev-", "trial-", "oktapreview.com")
+    is_throwaway = any(marker in org_url for marker in throwaway_markers)
+
+    if not is_throwaway and not args.i_know_what_im_doing:
         print(
             f"\nRefusing to seed {org_url}.\n"
-            "  This does not look like an Okta Developer Edition org, and this "
+            "  This does not look like a free, trial or preview org, and this "
             "script creates users, grants Super Admin, and registers hooks.\n"
+            f"  Expected the hostname to contain one of: "
+            f"{', '.join(throwaway_markers)}\n"
             "  If you are certain, re-run with --i-know-what-im-doing.\n",
             file=sys.stderr,
         )
@@ -369,7 +471,7 @@ def main() -> int:
     mode = "DRY RUN" if args.dry_run else "LIVE"
     print(f"\nSeeding {org_url}  [{mode}]")
 
-    Seeder(org_url, token, dry_run=args.dry_run).run()
+    Seeder(org_url, token, dry_run=args.dry_run, human_count=args.humans).run()
     return 0
 
 

@@ -115,10 +115,11 @@ the same reason this tool exists.
 
 ## Seeding a test tenant
 
-`scripts/seed_tenant.py` builds a deliberately messy tenant in a free Okta
-Developer Edition org — service accounts without MFA, an over-scoped OAuth app, a
-plaintext event hook, and one correctly-configured service account so the tool
-can demonstrate it distinguishes good from bad rather than flagging everything.
+`scripts/seed_tenant.py` builds a deliberately messy tenant in a free
+[Okta Integrator Free Plan](https://developer.okta.com/signup/) org — service
+accounts without MFA, an over-scoped OAuth app, a plaintext event hook, and one
+correctly-configured service account so the tool can demonstrate it distinguishes
+good from bad rather than flagging everything.
 
 ```bash
 python scripts/seed_tenant.py --dry-run
@@ -127,7 +128,17 @@ python scripts/seed_tenant.py --confirm
 
 This is the only file in the repository that writes. It lives in `scripts/`,
 nothing under `src/` imports it, and CI enforces both. It refuses to run against
-an org URL that doesn't look like a developer org.
+an org URL that doesn't look like a free, trial or preview org.
+
+**Integrator Free Plan orgs cap active users at 10**, including your own admin
+account, so the seeded scenario is small by design — a couple of humans and the
+five service accounts that actually generate findings. `--humans N` adjusts the
+count, and the script checks your remaining budget before creating anything.
+`--demo` is not subject to the cap and models a larger org.
+
+> Okta Developer Edition was retired in July 2025 and replaced by the Integrator
+> Free Plan. New orgs are provisioned at `integrator-1234567.okta.com`; migrated
+> orgs keep their `dev-` hostname. Both are handled.
 
 Org API tokens can't be created through the API — deliberately, and correctly, on
 Okta's part — so the script prints console steps for the orphaned-token scenario
@@ -173,8 +184,9 @@ you can't construct yourself. You follow the URL Okta hands you.
 
 **Rate limits tell you when to retry.** A 429 comes with `X-Rate-Limit-Reset`, a
 Unix timestamp for the window reset. Sleeping until then beats a blind
-`sleep(60)`. Developer orgs allow roughly 1,000 requests/minute, and each API
-token is capped at 50% of the org limit.
+`sleep(60)`. Limits are per-endpoint and vary by org type — free and trial orgs
+get materially lower per-minute limits — and each API token is additionally
+capped at 50% of the org limit for whichever endpoint it's calling.
 
 **Okta recommends OAuth over static API tokens**, for the reasons the taxonomy
 lays out. Auditing against the vendor's own stated guidance is a stronger

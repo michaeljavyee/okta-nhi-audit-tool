@@ -230,9 +230,11 @@ class OktaClient:
             raise OktaRateLimitError(
                 f"429 Too Many Requests — gave up after {MAX_RETRIES} retries on "
                 f"{url}.\n"
-                "  Developer orgs allow roughly 1,000 requests/minute, and each "
-                "API token is capped at 50% of the org limit (~500/min).\n"
-                "  Fix: rerun with fewer checks, or wait a minute."
+                "  Rate limits are per-endpoint and vary by org type; free and "
+                "trial orgs get materially lower per-minute limits than paid "
+                "ones. Each API token is additionally capped at 50% of the org "
+                "limit for the endpoint it is calling.\n"
+                "  Fix: rerun with fewer checks (--checks), or wait a minute."
                 f"{detail}"
             )
 
