@@ -1,0 +1,42 @@
+[
+  {
+    "id": "00Torphaned000000EXAMPLE",
+    "name": "terraform-okta-provider",
+    "userId": "00uHUMAN0022EXAMPLE",
+    "username": "wes.brennan@example.com",
+    "created": "2025-05-28T12:00:00.000Z",
+    "lastUpdated": "2025-05-28T12:00:00.000Z",
+    "expiresAt": "2026-08-30T12:00:00.000Z",
+    "tokenWindow": "PT720H"
+  },
+  {
+    "id": "00Tnightlyjob0000EXAMPLE",
+    "name": "nightly-user-sync",
+    "userId": "00uHUMAN0000EXAMPLE",
+    "username": "amara.okonkwo@example.com",
+    "created": "2024-07-22T12:00:00.000Z",
+    "lastUpdated": "2026-08-01T03:00:00.000Z",
+    "expiresAt": "2026-08-31T12:00:00.000Z",
+    "tokenWindow": "PT720H"
+  },
+  {
+    "id": "00Tstaletoken0000EXAMPLE",
+    "name": "adhoc-reporting-script",
+    "userId": "00uHUMAN0010EXAMPLE",
+    "username": "kavita.rao@example.com",
+    "created": "2026-01-23T12:00:00.000Z",
+    "lastUpdated": "2026-07-06T12:00:00.000Z",
+    "expiresAt": "2026-08-05T12:00:00.000Z",
+    "tokenWindow": "PT720H"
+  },
+  {
+    "id": "00Tneverused00000EXAMPLE",
+    "name": "token-2",
+    "userId": "00uHUMAN0018EXAMPLE",
+    "username": "samir.patel@example.com",
+    "created": "2025-12-01T12:00:00.000Z",
+    "lastUpdated": "2025-12-01T12:00:00.000Z",
+    "expiresAt": "2025-12-31T12:00:00.000Z",
+    "tokenWindow": "PT720H"
+  }
+]

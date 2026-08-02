@@ -1,0 +1,627 @@
+[
+  {
+    "id": "00uHUMAN0000EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-04-21T12:00:00.000Z",
+    "lastLogin": "2026-07-24T12:00:00.000Z",
+    "lastUpdated": "2026-05-02T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Amara",
+      "lastName": "Okonkwo",
+      "email": "amara.okonkwo@example.com",
+      "login": "amara.okonkwo@example.com",
+      "displayName": "Amara Okonkwo"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0001EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-01-04T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-05-18T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Ben",
+      "lastName": "Sorensen",
+      "email": "ben.sorensen@example.com",
+      "login": "ben.sorensen@example.com",
+      "displayName": "Ben Sorensen"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0002EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-07-28T12:00:00.000Z",
+    "lastLogin": "2026-07-27T12:00:00.000Z",
+    "lastUpdated": "2026-06-12T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Chen",
+      "lastName": "Wei",
+      "email": "chen.wei@example.com",
+      "login": "chen.wei@example.com",
+      "displayName": "Chen Wei"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0003EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-04-03T12:00:00.000Z",
+    "lastLogin": "2026-07-27T12:00:00.000Z",
+    "lastUpdated": "2026-04-05T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Dara",
+      "lastName": "Fitzgerald",
+      "email": "dara.fitzgerald@example.com",
+      "login": "dara.fitzgerald@example.com",
+      "displayName": "Dara Fitzgerald"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0004EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-03-04T12:00:00.000Z",
+    "lastLogin": "2026-07-26T12:00:00.000Z",
+    "lastUpdated": "2026-05-03T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Elena",
+      "lastName": "Vasquez",
+      "email": "elena.vasquez@example.com",
+      "login": "elena.vasquez@example.com",
+      "displayName": "Elena Vasquez"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0005EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-06-18T12:00:00.000Z",
+    "lastLogin": "2026-07-27T12:00:00.000Z",
+    "lastUpdated": "2026-07-18T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Femi",
+      "lastName": "Adeyemi",
+      "email": "femi.adeyemi@example.com",
+      "login": "femi.adeyemi@example.com",
+      "displayName": "Femi Adeyemi"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0006EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-11-04T12:00:00.000Z",
+    "lastLogin": "2026-07-26T12:00:00.000Z",
+    "lastUpdated": "2026-04-07T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Grace",
+      "lastName": "Lindqvist",
+      "email": "grace.lindqvist@example.com",
+      "login": "grace.lindqvist@example.com",
+      "displayName": "Grace Lindqvist"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0007EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-11-08T12:00:00.000Z",
+    "lastLogin": "2026-07-24T12:00:00.000Z",
+    "lastUpdated": "2026-05-03T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Hassan",
+      "lastName": "Karimi",
+      "email": "hassan.karimi@example.com",
+      "login": "hassan.karimi@example.com",
+      "displayName": "Hassan Karimi"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0008EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-02-29T12:00:00.000Z",
+    "lastLogin": "2026-07-27T12:00:00.000Z",
+    "lastUpdated": "2026-04-09T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Ingrid",
+      "lastName": "Bauer",
+      "email": "ingrid.bauer@example.com",
+      "login": "ingrid.bauer@example.com",
+      "displayName": "Ingrid Bauer"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0009EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-11-26T12:00:00.000Z",
+    "lastLogin": "2026-07-26T12:00:00.000Z",
+    "lastUpdated": "2026-04-20T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Jonas",
+      "lastName": "Meyer",
+      "email": "jonas.meyer@example.com",
+      "login": "jonas.meyer@example.com",
+      "displayName": "Jonas Meyer"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0010EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-03-01T12:00:00.000Z",
+    "lastLogin": "2026-08-01T12:00:00.000Z",
+    "lastUpdated": "2026-04-16T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Kavita",
+      "lastName": "Rao",
+      "email": "kavita.rao@example.com",
+      "login": "kavita.rao@example.com",
+      "displayName": "Kavita Rao"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0011EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-01-17T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-07-16T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Liam",
+      "lastName": "O'Donnell",
+      "email": "liam.odonnell@example.com",
+      "login": "liam.odonnell@example.com",
+      "displayName": "Liam O'Donnell"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0012EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-09-29T12:00:00.000Z",
+    "lastLogin": "2026-07-29T12:00:00.000Z",
+    "lastUpdated": "2026-07-10T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Mei",
+      "lastName": "Tanaka",
+      "email": "mei.tanaka@example.com",
+      "login": "mei.tanaka@example.com",
+      "displayName": "Mei Tanaka"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0013EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-02-26T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-06-03T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Nadia",
+      "lastName": "Haddad",
+      "email": "nadia.haddad@example.com",
+      "login": "nadia.haddad@example.com",
+      "displayName": "Nadia Haddad"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0014EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-05-06T12:00:00.000Z",
+    "lastLogin": "2026-07-28T12:00:00.000Z",
+    "lastUpdated": "2026-04-20T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Oscar",
+      "lastName": "Delgado",
+      "email": "oscar.delgado@example.com",
+      "login": "oscar.delgado@example.com",
+      "displayName": "Oscar Delgado"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0015EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-06-22T12:00:00.000Z",
+    "lastLogin": "2026-07-24T12:00:00.000Z",
+    "lastUpdated": "2026-07-23T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Priya",
+      "lastName": "Nair",
+      "email": "priya.nair@example.com",
+      "login": "priya.nair@example.com",
+      "displayName": "Priya Nair"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0016EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-03-31T12:00:00.000Z",
+    "lastLogin": "2026-07-24T12:00:00.000Z",
+    "lastUpdated": "2026-05-13T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Quentin",
+      "lastName": "Boucher",
+      "email": "quentin.boucher@example.com",
+      "login": "quentin.boucher@example.com",
+      "displayName": "Quentin Boucher"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0017EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-06-01T12:00:00.000Z",
+    "lastLogin": "2026-08-01T12:00:00.000Z",
+    "lastUpdated": "2026-07-22T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Rosa",
+      "lastName": "Marchetti",
+      "email": "rosa.marchetti@example.com",
+      "login": "rosa.marchetti@example.com",
+      "displayName": "Rosa Marchetti"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0018EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-11-22T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-07-25T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Samir",
+      "lastName": "Patel",
+      "email": "samir.patel@example.com",
+      "login": "samir.patel@example.com",
+      "displayName": "Samir Patel"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0019EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-02-22T12:00:00.000Z",
+    "lastLogin": "2026-08-01T12:00:00.000Z",
+    "lastUpdated": "2026-05-11T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Tessa",
+      "lastName": "Nguyen",
+      "email": "tessa.nguyen@example.com",
+      "login": "tessa.nguyen@example.com",
+      "displayName": "Tessa Nguyen"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0020EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-06-26T12:00:00.000Z",
+    "lastLogin": "2026-07-29T12:00:00.000Z",
+    "lastUpdated": "2026-07-18T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Ulrich",
+      "lastName": "Schmitt",
+      "email": "ulrich.schmitt@example.com",
+      "login": "ulrich.schmitt@example.com",
+      "displayName": "Ulrich Schmitt"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0021EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-03-28T12:00:00.000Z",
+    "lastLogin": "2026-07-29T12:00:00.000Z",
+    "lastUpdated": "2026-06-04T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Vera",
+      "lastName": "Kowalski",
+      "email": "vera.kowalski@example.com",
+      "login": "vera.kowalski@example.com",
+      "displayName": "Vera Kowalski"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0022EXAMPLE",
+    "status": "DEPROVISIONED",
+    "created": "2024-06-10T12:00:00.000Z",
+    "lastLogin": null,
+    "lastUpdated": "2026-06-21T12:00:00.000Z",
+    "statusChanged": "2026-06-21T12:00:00.000Z",
+    "profile": {
+      "firstName": "Wes",
+      "lastName": "Brennan",
+      "email": "wes.brennan@example.com",
+      "login": "wes.brennan@example.com",
+      "displayName": "Wes Brennan"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0023EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2026-01-01T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-06-19T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Xiomara",
+      "lastName": "Reyes",
+      "email": "xiomara.reyes@example.com",
+      "login": "xiomara.reyes@example.com",
+      "displayName": "Xiomara Reyes"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uHUMAN0024EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-10-28T12:00:00.000Z",
+    "lastLogin": "2026-07-23T12:00:00.000Z",
+    "lastUpdated": "2026-04-21T12:00:00.000Z",
+    "statusChanged": "2026-01-13T12:00:00.000Z",
+    "profile": {
+      "firstName": "Yusuf",
+      "lastName": "Demir",
+      "email": "yusuf.demir@example.com",
+      "login": "yusuf.demir@example.com",
+      "displayName": "Yusuf Demir"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uSVCJIRA0000EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2024-11-27T12:00:00.000Z",
+    "lastLogin": null,
+    "lastUpdated": "2025-06-27T12:00:00.000Z",
+    "profile": {
+      "firstName": "svc",
+      "lastName": "jira",
+      "email": "svc-jira@example.com",
+      "login": "svc-jira@example.com",
+      "displayName": "Jira Integration Service Account"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uAUTOMATION0EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-03-31T12:00:00.000Z",
+    "lastLogin": null,
+    "lastUpdated": "2025-09-25T12:00:00.000Z",
+    "profile": {
+      "firstName": "Automation",
+      "lastName": "Account",
+      "email": "automation@example.com",
+      "login": "automation@example.com",
+      "displayName": "Automation"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uINTHUBSPOT0EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-07-02T12:00:00.000Z",
+    "lastLogin": "2025-07-17T12:00:00.000Z",
+    "lastUpdated": "2025-07-17T12:00:00.000Z",
+    "profile": {
+      "firstName": "integration",
+      "lastName": "hubspot",
+      "email": "integration-hubspot@example.com",
+      "login": "integration-hubspot@example.com",
+      "displayName": "HubSpot Integration"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uBOTBUILD000EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2025-11-24T12:00:00.000Z",
+    "lastLogin": null,
+    "lastUpdated": "2025-11-24T12:00:00.000Z",
+    "profile": {
+      "firstName": "build",
+      "lastName": "bot",
+      "email": "bot-builds@example.com",
+      "login": "bot-builds@example.com",
+      "displayName": "CI Build Bot"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  },
+  {
+    "id": "00uSVCBACKUP00EXAMPLE",
+    "status": "ACTIVE",
+    "created": "2026-02-02T12:00:00.000Z",
+    "lastLogin": null,
+    "lastUpdated": "2026-07-02T12:00:00.000Z",
+    "profile": {
+      "firstName": "svc",
+      "lastName": "backup",
+      "email": "svc-backup@example.com",
+      "login": "svc-backup@example.com",
+      "displayName": "Backup Service Account (managed)"
+    },
+    "credentials": {
+      "provider": {
+        "type": "OKTA",
+        "name": "OKTA"
+      }
+    }
+  }
+]

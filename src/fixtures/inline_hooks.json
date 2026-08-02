@@ -1,0 +1,21 @@
+[
+  {
+    "id": "cal001EXAMPLE",
+    "name": "token-claim-enrichment",
+    "type": "com.okta.oauth2.tokens.transform",
+    "status": "ACTIVE",
+    "created": "2026-02-12T12:00:00.000Z",
+    "lastUpdated": "2026-02-12T12:00:00.000Z",
+    "channel": {
+      "type": "HTTP",
+      "version": "1.0.0",
+      "config": {
+        "uri": "https://claims.internal-tools.example.com/enrich",
+        "authScheme": {
+          "type": "HEADER",
+          "key": "Authorization"
+        }
+      }
+    }
+  }
+]

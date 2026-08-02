@@ -1,0 +1,1442 @@
+[
+  {
+    "uuid": "evt-A0000EXAMPLE-0",
+    "published": "2026-08-01T11:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-1",
+    "published": "2026-08-01T09:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-2",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-3",
+    "published": "2026-08-01T05:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-4",
+    "published": "2026-08-01T03:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-5",
+    "published": "2026-08-01T01:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-6",
+    "published": "2026-07-31T23:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-7",
+    "published": "2026-07-31T21:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-8",
+    "published": "2026-07-31T19:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-9",
+    "published": "2026-07-31T17:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-10",
+    "published": "2026-07-31T15:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-A0000EXAMPLE-11",
+    "published": "2026-07-31T13:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCJIRA0000EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-jira@example.com",
+      "displayName": "svc-jira@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 480
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-0",
+    "published": "2026-08-01T11:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-1",
+    "published": "2026-08-01T09:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-2",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-3",
+    "published": "2026-08-01T05:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-4",
+    "published": "2026-08-01T03:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-5",
+    "published": "2026-08-01T01:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-6",
+    "published": "2026-07-31T23:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-7",
+    "published": "2026-07-31T21:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-8",
+    "published": "2026-07-31T19:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-9",
+    "published": "2026-07-31T17:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-10",
+    "published": "2026-07-31T15:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-TION0EXAMPLE-11",
+    "published": "2026-07-31T13:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uAUTOMATION0EXAMPLE",
+      "type": "User",
+      "alternateId": "automation@example.com",
+      "displayName": "automation@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 260
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-0",
+    "published": "2026-08-01T11:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-1",
+    "published": "2026-08-01T09:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-2",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-3",
+    "published": "2026-08-01T05:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-4",
+    "published": "2026-08-01T03:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-5",
+    "published": "2026-08-01T01:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-6",
+    "published": "2026-07-31T23:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-7",
+    "published": "2026-07-31T21:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-8",
+    "published": "2026-07-31T19:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-9",
+    "published": "2026-07-31T17:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-10",
+    "published": "2026-07-31T15:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-SPOT0EXAMPLE-11",
+    "published": "2026-07-31T13:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "integration-hubspot@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 95
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-0",
+    "published": "2026-08-01T11:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-1",
+    "published": "2026-08-01T09:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-2",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-3",
+    "published": "2026-08-01T05:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-4",
+    "published": "2026-08-01T03:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-5",
+    "published": "2026-08-01T01:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-6",
+    "published": "2026-07-31T23:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-7",
+    "published": "2026-07-31T21:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-8",
+    "published": "2026-07-31T19:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-9",
+    "published": "2026-07-31T17:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-10",
+    "published": "2026-07-31T15:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-LD000EXAMPLE-11",
+    "published": "2026-07-31T13:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uBOTBUILD000EXAMPLE",
+      "type": "User",
+      "alternateId": "bot-builds@example.com",
+      "displayName": "bot-builds@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 140
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-0",
+    "published": "2026-08-01T11:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-1",
+    "published": "2026-08-01T09:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-2",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-3",
+    "published": "2026-08-01T05:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-4",
+    "published": "2026-08-01T03:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-5",
+    "published": "2026-08-01T01:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-6",
+    "published": "2026-07-31T23:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-7",
+    "published": "2026-07-31T21:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-8",
+    "published": "2026-07-31T19:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-9",
+    "published": "2026-07-31T17:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-10",
+    "published": "2026-07-31T15:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-KUP00EXAMPLE-11",
+    "published": "2026-07-31T13:00:00.000Z",
+    "eventType": "system.api_token.access",
+    "displayMessage": "API token access",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uSVCBACKUP00EXAMPLE",
+      "type": "User",
+      "alternateId": "svc-backup@example.com",
+      "displayName": "svc-backup@example.com"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "python-requests/2.31.0"
+      }
+    },
+    "_apiEventCount": 31
+  },
+  {
+    "uuid": "evt-login-0",
+    "published": "2026-08-01T12:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0000EXAMPLE",
+      "type": "User",
+      "alternateId": "amara.okonkwo@example.com",
+      "displayName": "Amara Okonkwo"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-1",
+    "published": "2026-07-31T11:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0001EXAMPLE",
+      "type": "User",
+      "alternateId": "ben.sorensen@example.com",
+      "displayName": "Ben Sorensen"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-2",
+    "published": "2026-07-30T10:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0002EXAMPLE",
+      "type": "User",
+      "alternateId": "chen.wei@example.com",
+      "displayName": "Chen Wei"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-3",
+    "published": "2026-07-29T09:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0003EXAMPLE",
+      "type": "User",
+      "alternateId": "dara.fitzgerald@example.com",
+      "displayName": "Dara Fitzgerald"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-4",
+    "published": "2026-07-28T08:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0004EXAMPLE",
+      "type": "User",
+      "alternateId": "elena.vasquez@example.com",
+      "displayName": "Elena Vasquez"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-5",
+    "published": "2026-08-01T07:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0005EXAMPLE",
+      "type": "User",
+      "alternateId": "femi.adeyemi@example.com",
+      "displayName": "Femi Adeyemi"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-6",
+    "published": "2026-07-31T06:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0006EXAMPLE",
+      "type": "User",
+      "alternateId": "grace.lindqvist@example.com",
+      "displayName": "Grace Lindqvist"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-7",
+    "published": "2026-07-30T05:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uHUMAN0007EXAMPLE",
+      "type": "User",
+      "alternateId": "hassan.karimi@example.com",
+      "displayName": "Hassan Karimi"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    }
+  },
+  {
+    "uuid": "evt-login-hubspot-setup",
+    "published": "2025-07-17T12:00:00.000Z",
+    "eventType": "user.session.start",
+    "displayMessage": "User login to Okta",
+    "outcome": {
+      "result": "SUCCESS"
+    },
+    "actor": {
+      "id": "00uINTHUBSPOT0EXAMPLE",
+      "type": "User",
+      "alternateId": "integration-hubspot@example.com",
+      "displayName": "HubSpot Integration"
+    },
+    "client": {
+      "userAgent": {
+        "rawUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+      }
+    }
+  }
+]

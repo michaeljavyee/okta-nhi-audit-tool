@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Non-Human Identity Assessment — Northwind Robotics (DEMO FIXTURE — not a real tenant)</title>
+<style>
+/* Everything is inline. No CDN, no external font, no remote image.
+   The report has to survive being emailed as an attachment and opened on a
+   laptop with no network, six months from now. */
+:root {
+  --ink: #14181f;
+  --muted: #5b6472;
+  --line: #e2e6ec;
+  --bg: #ffffff;
+  --panel: #f7f8fa;
+  --critical: #a4161a;
+  --critical-bg: #fdf0f0;
+  --high: #bc4b00;
+  --high-bg: #fdf4ec;
+  --medium: #8a6d00;
+  --medium-bg: #fcf8e8;
+  --low: #2f6b45;
+  --low-bg: #eff6f1;
+  --info: #3a5a8c;
+  --info-bg: #eef3fa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0 0 80px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+header.cover {
+  border-bottom: 3px solid var(--ink);
+  padding: 56px 0 28px;
+  margin-bottom: 40px;
+}
+.eyebrow {
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin: 0 0 12px;
+}
+h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.02em; }
+.subtitle { font-size: 17px; color: var(--muted); margin: 0 0 24px; }
+.meta { display: flex; flex-wrap: wrap; gap: 0 40px; font-size: 13px; color: var(--muted); }
+.meta div { margin-bottom: 4px; }
+.meta strong { color: var(--ink); font-weight: 600; }
+
+.demo-banner {
+  background: var(--info-bg); border: 1px solid #c6d5ea; border-left: 4px solid var(--info);
+  padding: 12px 16px; border-radius: 4px; font-size: 13px; margin: 24px 0 0; color: #24406b;
+}
+
+h2 {
+  font-size: 13px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700;
+  border-bottom: 1px solid var(--line); padding-bottom: 8px;
+  margin: 48px 0 20px;
+}
+h3 { font-size: 17px; margin: 28px 0 8px; letter-spacing: -.01em; }
+
+.verdict {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: 20px 24px; margin: 0 0 24px; font-size: 15.5px;
+}
+.verdict p { margin: 0 0 12px; }
+.verdict p:last-child { margin-bottom: 0; }
+
+.scores { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 8px; }
+.score {
+  flex: 1 1 120px; border: 1px solid var(--line); border-radius: 6px;
+  padding: 14px 16px; background: #fff;
+}
+.score .n { font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -.03em; }
+.score .l {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin-top: 6px;
+}
+.score.critical { background: var(--critical-bg); border-color: #f0cbcb; }
+.score.critical .n { color: var(--critical); }
+.score.high { background: var(--high-bg); border-color: #f2d9c2; }
+.score.high .n { color: var(--high); }
+.score.medium { background: var(--medium-bg); border-color: #eee2b3; }
+.score.medium .n { color: var(--medium); }
+.score.low { background: var(--low-bg); border-color: #cbe3d4; }
+.score.low .n { color: var(--low); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 12px 0 8px; }
+th {
+  text-align: left; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; padding: 8px 10px;
+  border-bottom: 2px solid var(--line); white-space: nowrap;
+}
+td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+td.wrap-any { word-break: break-word; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+
+.pill {
+  display: inline-block; padding: 2px 8px; border-radius: 3px;
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+  white-space: nowrap;
+}
+.pill.critical { background: var(--critical); color: #fff; }
+.pill.high { background: var(--high); color: #fff; }
+.pill.medium { background: var(--medium); color: #fff; }
+.pill.low { background: var(--low); color: #fff; }
+.pill.info { background: var(--info); color: #fff; }
+
+.finding {
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 20px 24px; margin: 0 0 16px; background: #fff;
+  page-break-inside: avoid;
+}
+.finding.critical { border-left: 5px solid var(--critical); }
+.finding.high { border-left: 5px solid var(--high); }
+.finding.medium { border-left: 5px solid var(--medium); }
+.finding.low { border-left: 5px solid var(--low); }
+.finding-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+.finding-head .id { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: .08em; }
+.finding h3 { margin: 6px 0 2px; font-size: 16.5px; }
+.finding .identity {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px; color: var(--muted); margin-bottom: 14px;
+}
+.block { margin: 14px 0 0; }
+.block .label {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; margin-bottom: 4px;
+}
+.block p { margin: 0; }
+.block.evidence p {
+  background: var(--panel); border-radius: 4px; padding: 10px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px; line-height: 1.55; color: #33404f;
+}
+
+.roadmap-phase { margin-bottom: 24px; }
+.roadmap-phase .phase-head {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px;
+}
+.roadmap-phase h3 { margin: 0; font-size: 16px; }
+.roadmap-phase .when { font-size: 12.5px; color: var(--muted); }
+ol.actions { margin: 0; padding-left: 22px; }
+ol.actions li { margin-bottom: 8px; }
+ol.actions .who { color: var(--muted); font-size: 13px; }
+
+ul.plain { margin: 8px 0; padding-left: 20px; }
+ul.plain li { margin-bottom: 7px; }
+
+.method-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+.method-col { flex: 1 1 260px; }
+
+footer {
+  margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
+  font-size: 12px; color: var(--muted);
+}
+.empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+
+@media print {
+  body { padding-bottom: 0; }
+  .wrap { max-width: none; padding: 0 12mm; }
+  .finding, .roadmap-phase, table { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <p class="eyebrow">Security Assessment</p>
+  <h1>Non-Human Identity Assessment</h1>
+  <p class="subtitle">Northwind Robotics (DEMO FIXTURE — not a real tenant) &mdash; Okta tenant</p>
+  <div class="meta">
+    <div><strong>Tenant</strong><br>https://dev-00000000.okta.com</div>
+    <div><strong>Assessment date</strong><br>02 August 2026, 00:25 UTC</div>
+    <div><strong>Access level</strong><br>Read-only</div>
+    <div><strong>Identities inventoried</strong><br>19</div>
+    <div><strong>Findings</strong><br>20</div>
+  </div>
+  <div class="demo-banner">
+    <strong>Demonstration report.</strong> Generated from bundled fixture data
+    representing a fictional 40-person company. No real Okta tenant was
+    contacted. Every domain, identifier and name in this document is synthetic.
+  </div>
+</header>
+
+<!-- 1 ------------------------------------------------------------------ -->
+<h2>1 &nbsp;&middot;&nbsp; Executive summary</h2>
+
+<div class="scores">
+  <div class="score critical">
+    <div class="n">2</div>
+    <div class="l">critical</div>
+  </div>
+  <div class="score high">
+    <div class="n">6</div>
+    <div class="l">high</div>
+  </div>
+  <div class="score medium">
+    <div class="n">7</div>
+    <div class="l">medium</div>
+  </div>
+  <div class="score low">
+    <div class="n">5</div>
+    <div class="l">low</div>
+  </div>
+  <div class="score">
+    <div class="n">19</div>
+    <div class="l">NHIs found</div>
+  </div>
+</div>
+
+<div class="verdict">
+<p>This assessment identified 19 non-human identities in the Okta tenant and 2 findings requiring action within 24 hours. The most significant is terraform-okta-provider: API token is owned by a user account that is no longer active (DEPROVISIONED).</p><p>The pattern across these findings is ownership rather than configuration. Individually, most of the issues below are the result of a reasonable decision made quickly — a token issued to unblock a deployment, an admin role granted to fix a failing sync, a scope set to manage because it was simpler than working out which read scopes were needed. What makes them risk rather than debt is that no person or team currently owns any of these identities, so nothing causes them to be revisited. Okta provides no owner field for tokens, hooks or service integrations, which means ownership has to be maintained deliberately or not at all.</p><p>The inventory in section 2 lists all 19 identities. For most organisations this list has never previously been assembled, and it is worth reviewing on its own terms — before considering the findings — simply to establish whether every entry is recognised.</p></div>
+
+<h3>Findings requiring action within 24 hours</h3>
+<ul class="plain">
+  <li><strong>terraform-okta-provider</strong> &mdash; API token is owned by a user account that is no longer active (DEPROVISIONED).</li>
+  <li><strong>svc-jira@example.com</strong> &mdash; Suspected service account holds the Super Administrator administrative role.</li>
+</ul>
+
+<!-- 2 ------------------------------------------------------------------ -->
+<h2>2 &nbsp;&middot;&nbsp; Non-human identity inventory</h2>
+
+<p>
+  Every non-human identity discovered in the tenant, grouped by type. Most
+  organisations maintain an accurate list of their employees and no list at all
+  of their service accounts, API tokens and machine integrations. This section
+  is that list.
+</p>
+
+<h3>Org API token <span class="mono">(4)</span></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th>Last activity</th>
+      <th>Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="wrap-any"><strong>terraform-okta-provider</strong>
+<br><span class="mono" style="color:#5b6472">expires in 28 days (resets on each use)</span>      </td>
+      <td class="wrap-any">wes.brennan@example.com (DEPROVISIONED)</td>
+      <td>2025-05-28</td>
+      <td class="wrap-any">430 days ago</td>
+      <td class="wrap-any">Inherits creator&#39;s admin privileges at time of creation</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>nightly-user-sync</strong>
+<br><span class="mono" style="color:#5b6472">expires in 29 days (resets on each use)</span>      </td>
+      <td class="wrap-any">amara.okonkwo@example.com (ACTIVE)</td>
+      <td>2024-07-22</td>
+      <td class="wrap-any">today</td>
+      <td class="wrap-any">Inherits creator&#39;s admin privileges at time of creation</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>adhoc-reporting-script</strong>
+<br><span class="mono" style="color:#5b6472">expires in 3 days (resets on each use)</span>      </td>
+      <td class="wrap-any">kavita.rao@example.com (ACTIVE)</td>
+      <td>2026-01-23</td>
+      <td class="wrap-any">26 days ago</td>
+      <td class="wrap-any">Inherits creator&#39;s admin privileges at time of creation</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>token-2</strong>
+<br><span class="mono" style="color:#5b6472">expired 214 days ago</span>      </td>
+      <td class="wrap-any">samir.patel@example.com (ACTIVE)</td>
+      <td>2025-12-01</td>
+      <td class="wrap-any">243 days ago</td>
+      <td class="wrap-any">Inherits creator&#39;s admin privileges at time of creation</td>
+    </tr>
+  </tbody>
+</table>
+<h3>API service integration (OAuth) <span class="mono">(2)</span></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th>Last activity</th>
+      <th>Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="wrap-any"><strong>Internal Provisioning Service</strong>
+<br><span class="mono" style="color:#5b6472">client_credentials grant, status ACTIVE, 2 write scope(s)</span>      </td>
+      <td class="wrap-any">unassigned — Okta records no owner on an app object</td>
+      <td>2025-10-05</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">okta.apps.read, okta.groups.manage, okta.users.manage</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>Security Reporting Exporter</strong>
+<br><span class="mono" style="color:#5b6472">client_credentials grant, status ACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — Okta records no owner on an app object</td>
+      <td>2026-04-03</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">okta.logs.read, okta.users.read</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Service account (user object) <span class="mono">(7)</span></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th>Last activity</th>
+      <th>Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="wrap-any"><strong>svc-jira@example.com</strong>
+<br><span class="mono" style="color:#5b6472">heuristic score 1.00: login matches service-account naming convention (svc-, integration); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 480 API events attributed to this actor</span>      </td>
+      <td class="wrap-any">unassigned — no owning team recorded on the user profile</td>
+      <td>2024-11-27</td>
+      <td class="wrap-any">480 API events in the log window</td>
+      <td class="wrap-any">Super Administrator</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>automation@example.com</strong>
+<br><span class="mono" style="color:#5b6472">heuristic score 1.00: login matches service-account naming convention (automation); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 260 API events attributed to this actor</span>      </td>
+      <td class="wrap-any">unassigned — no owning team recorded on the user profile</td>
+      <td>2025-03-31</td>
+      <td class="wrap-any">260 API events in the log window</td>
+      <td class="wrap-any">Organization Administrator</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>integration-hubspot@example.com</strong>
+<br><span class="mono" style="color:#5b6472">heuristic score 0.70: login matches service-account naming convention (integration); no MFA factor enrolled; 95 API events attributed to this actor</span>      </td>
+      <td class="wrap-any">unassigned — no owning team recorded on the user profile</td>
+      <td>2025-07-02</td>
+      <td class="wrap-any">95 API events in the log window</td>
+      <td class="wrap-any">no admin role</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>bot-builds@example.com</strong>
+<br><span class="mono" style="color:#5b6472">heuristic score 1.00: login matches service-account naming convention (bot-); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 140 API events attributed to this actor</span>      </td>
+      <td class="wrap-any">unassigned — no owning team recorded on the user profile</td>
+      <td>2025-11-24</td>
+      <td class="wrap-any">140 API events in the log window</td>
+      <td class="wrap-any">no admin role</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>svc-backup@example.com</strong>
+<br><span class="mono" style="color:#5b6472">heuristic score 0.75: login matches service-account naming convention (svc-); no interactive browser sign-in in the System Log window; 31 API events attributed to this actor</span>      </td>
+      <td class="wrap-any">unassigned — no owning team recorded on the user profile</td>
+      <td>2026-02-02</td>
+      <td class="wrap-any">31 API events in the log window</td>
+      <td class="wrap-any">no admin role</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>svc-jira@example.com — Super Administrator</strong>
+<br><span class="mono" style="color:#5b6472">admin role held by a suspected non-human identity</span>      </td>
+      <td class="wrap-any">unassigned</td>
+      <td>2024-11-29</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">Super Administrator</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>automation@example.com — Organization Administrator</strong>
+<br><span class="mono" style="color:#5b6472">admin role held by a suspected non-human identity</span>      </td>
+      <td class="wrap-any">unassigned</td>
+      <td>2025-04-08</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">Organization Administrator</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Event / inline hook <span class="mono">(3)</span></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th>Last activity</th>
+      <th>Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="wrap-any"><strong>user-lifecycle-to-internal-tools (event hook)</strong>
+<br><span class="mono" style="color:#5b6472">destination hooks.internal-tools.example.com, status ACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — Okta records no owner on a hook</td>
+      <td>2025-11-14</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">user.lifecycle.create, user.lifecycle.deactivate</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>legacy-audit-forwarder (event hook)</strong>
+<br><span class="mono" style="color:#5b6472">destination audit-collector.thirdparty-vendor.example.net, status ACTIVE, NO auth header configured</span>      </td>
+      <td class="wrap-any">unassigned — Okta records no owner on a hook</td>
+      <td>2025-02-27</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">user.session.start</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>token-claim-enrichment (inline hook)</strong>
+<br><span class="mono" style="color:#5b6472">destination claims.internal-tools.example.com, status ACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — Okta records no owner on a hook</td>
+      <td>2026-02-12</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">com.okta.oauth2.tokens.transform</td>
+    </tr>
+  </tbody>
+</table>
+<h3>SCIM provisioning connection <span class="mono">(3)</span></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Identity</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th>Last activity</th>
+      <th>Privilege</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="wrap-any"><strong>Slack</strong>
+<br><span class="mono" style="color:#5b6472">app status ACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — the downstream credential has no Okta owner</td>
+      <td>2024-08-31</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">downstream: create users, update profiles, deactivate users</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>GitHub Enterprise Cloud</strong>
+<br><span class="mono" style="color:#5b6472">app status ACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — the downstream credential has no Okta owner</td>
+      <td>2024-10-30</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">downstream: create users, update profiles</td>
+    </tr>
+    <tr>
+      <td class="wrap-any"><strong>Zoom (legacy - migrated off 2025)</strong>
+<br><span class="mono" style="color:#5b6472">app status INACTIVE</span>      </td>
+      <td class="wrap-any">unassigned — the downstream credential has no Okta owner</td>
+      <td>2024-05-23</td>
+      <td class="wrap-any">—</td>
+      <td class="wrap-any">downstream: create users, update profiles, deactivate users</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 3 ------------------------------------------------------------------ -->
+<h2>3 &nbsp;&middot;&nbsp; Findings</h2>
+
+
+<div class="finding critical">
+  <div class="finding-head">
+    <span class="pill critical">critical</span>
+    <span class="id">NHI-001</span>
+    <span class="id">Org API token</span>
+  </div>
+  <h3>API token is owned by a user account that is no longer active (DEPROVISIONED).</h3>
+  <div class="identity">terraform-okta-provider &nbsp;&middot;&nbsp; 00Torphaned000000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Token &#39;terraform-okta-provider&#39; (id 00Torphaned000000EXAMPLE) was created on 2025-05-28 by wes.brennan@example.com, whose Okta account is currently DEPROVISIONED. The token was last used 430 days ago.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>An Okta API token carries the administrative privileges its creator held at the moment it was issued, and those privileges do not change when the creator&#39;s account is deactivated. This credential still has whatever access wes.brennan@example.com had, but there is no longer a person accountable for it, no one who knows what uses it, and no one who would notice if it were stolen. Offboarding removed the human and left the credential behind. Because the 30-day expiry clock resets on every use, an automated job keeps this token alive indefinitely.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Revoke immediately: Admin console -&gt; Security -&gt; API -&gt; Tokens -&gt; revoke this token. Before revoking, identify what uses it by filtering the System Log on this token and coordinating a replacement. Reissue as an API Service Integration with only the scopes the workload actually needs, owned by a team rather than a person. Add &#39;revoke API tokens created by this user&#39; to the offboarding checklist.</p>
+  </div>
+</div>
+<div class="finding critical">
+  <div class="finding-head">
+    <span class="pill critical">critical</span>
+    <span class="id">NHI-002</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>Suspected service account holds the Super Administrator administrative role.</h3>
+  <div class="identity">svc-jira@example.com &nbsp;&middot;&nbsp; 00uSVCJIRA0000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>svc-jira@example.com was assessed as a non-human identity (heuristic score 1.00: login matches service-account naming convention (svc-, integration); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 480 API events attributed to this actor) and holds Super Administrator, assigned 2024-11-29. MFA enrolled: no.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>svc-jira@example.com holds Super Administrator, which grants complete administrative control of the tenant, including the ability to create further admins, disable MFA policies, modify authentication rules, and access every application. This account shows the behaviour of software rather than a person: it does not sign in interactively, and its credential is therefore stored somewhere — a CI secret, a configuration file, a script, a password manager entry shared across a team. Because no MFA factor is enrolled, that stored credential is the only thing standing between an attacker and this level of access. There is no second factor to fail closed. In practical terms, anyone who obtains this credential owns the identity provider — and therefore owns every application behind it. They can create themselves a persistent admin account, weaken MFA policy, and read or grant access to any connected SaaS system. Identity provider compromise is the standard opening move in recent SaaS breaches precisely because it collapses every other control at once. There is also no accountable owner: if this credential were used maliciously tomorrow, the audit trail would name a service account, and nobody could say who was responsible for it.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Treat as urgent. 1) Determine what svc-jira@example.com actually does by filtering the System Log on this actor over the last 90 days. 2) Identify the minimum role that covers those operations — in nearly all cases a scoped custom admin role, or no admin role at all, is sufficient. 3) Replace the Super Administrator assignment with that scoped role: Admin console -&gt; Security -&gt; Administrators -&gt; select the account -&gt; edit assignments. 4) Migrate the workload to an API Service Integration with explicit scopes, so access is granted to a workload rather than inherited from a user object. 5) Record a named owning team on the account. Do not simply delete the role before step 1 — you will break something and not know what.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-003</span>
+    <span class="id">Event / inline hook</span>
+  </div>
+  <h3>Active event hook delivers identity data over plaintext HTTP.</h3>
+  <div class="identity">legacy-audit-forwarder &nbsp;&middot;&nbsp; who002EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Hook &#39;legacy-audit-forwarder&#39; (who002EXAMPLE) is ACTIVE and posts to http://audit-collector.thirdparty-vendor.example.net/ingest. The scheme is http, not https. Events sent: user.session.start. Auth scheme configured: none. Verification status: UNVERIFIED.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>Every time this hook fires, your identity provider sends user data — logins, names, session events — across the network unencrypted. Anyone positioned between Okta and audit-collector.thirdparty-vendor.example.net can read it, and if an auth header were configured they would read that credential too, in the clear, on every request. The destination is a third-party domain, so the traffic leaves your control entirely. This is the kind of finding that appears in a SOC 2 report as an encryption-in-transit exception.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Move the endpoint to HTTPS with a valid certificate and update the hook: Admin console -&gt; Workflow -&gt; Event Hooks -&gt; legacy-audit-forwarder. If the destination cannot support TLS, the integration should be retired rather than fixed. Confirm who owns audit-collector.thirdparty-vendor.example.net and whether this integration is still required at all — hooks pointing at long-forgotten vendors are common.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-004</span>
+    <span class="id">API service integration (OAuth)</span>
+  </div>
+  <h3>API service integration holds tenant-control scopes that are broader than a read-only workload requires.</h3>
+  <div class="identity">Internal Provisioning Service &nbsp;&middot;&nbsp; 0oaAPISVCPROV0EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>&#39;Internal Provisioning Service&#39; (0oaAPISVCPROV0EXAMPLE) is granted: okta.apps.read, okta.groups.manage, okta.users.manage. Of these, okta.groups.manage, okta.users.manage permit write operations against core identity objects. Read-only equivalents exist for each (okta.groups.read, okta.users.read).</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>&#39;Internal Provisioning Service&#39; authenticates with a client ID and secret and no human is involved in the flow, so its access is entirely determined by the scopes granted to it. Those scopes currently include write access to core identity objects: okta.groups.manage allows it to create and modify groups and their membership — and therefore change who has access to what; okta.users.manage allows it to create, modify, deactivate and reset credentials for any user in the org. If the client secret leaks — from a CI log, an environment variable dump, a compromised laptop, or a repository — an attacker obtains that same write access, and it looks like normal integration traffic in the log. The narrower point is governance: nobody can currently state what this integration writes, which means nobody can state what an attacker holding its secret could change. Okta&#39;s own guidance is to grant the least-privileged scope that lets the workload function, so this is measured against the vendor&#39;s stated standard rather than an external one.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Establish what write operations this integration actually performs — filter the System Log on this client_id (0oaAPISVCPROV0EXAMPLE) and look for anything beyond reads. If the traffic is read-only, replace each .manage scope with its .read equivalent: Admin console -&gt; Applications -&gt; Internal Provisioning Service -&gt; Okta API Scopes -&gt; revoke the .manage grant and grant .read. If some writes are genuinely needed, grant only the specific scopes covering them and record why in a comment or ticket, so the next reviewer does not have to rediscover it. Okta&#39;s guidance on scoping API service integrations is to grant the narrowest scope that permits the workload to function.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-005</span>
+    <span class="id">SCIM provisioning connection</span>
+  </div>
+  <h3>SCIM provisioning remains configured on an application that is INACTIVE.</h3>
+  <div class="identity">Zoom (legacy - migrated off 2025) &nbsp;&middot;&nbsp; 0oaSCIMZOOM000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>&#39;Zoom (legacy - migrated off 2025)&#39; (0oaSCIMZOOM000EXAMPLE) has status INACTIVE but USER_PROVISIONING is still ENABLED with capabilities: create users, update profiles, deactivate users.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>When Zoom (legacy - migrated off 2025) was switched off in Okta, the API credential Okta holds for the downstream system was almost certainly not revoked on the other side. That credential typically has administrative rights in the downstream product — it has to, in order to create and delete accounts. So there is now a live, privileged, unmonitored credential for a system nobody considers part of the environment any more. Decommissioning that stops at &#39;we turned it off in Okta&#39; leaves exactly this behind, and it will not appear in any inventory because the app looks inactive.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Retrieve the provisioning credential&#39;s identity from the Zoom (legacy - migrated off 2025) admin console and revoke it there — deactivating the Okta app does not revoke it. Then remove the provisioning configuration from the Okta app and delete the app. Add &#39;revoke downstream provisioning credentials&#39; to your SaaS decommissioning checklist.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-006</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.</h3>
+  <div class="identity">automation@example.com &nbsp;&middot;&nbsp; 00uAUTOMATION0EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>automation@example.com scored 1.00 against a 0.50 threshold. Signals: login matches service-account naming convention (automation); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 260 API events attributed to this actor. Created 2025-03-31. Admin roles held: Organization Administrator.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>automation@example.com is being used by software rather than a person, but it exists in Okta as an ordinary user. That means it is governed by the controls you designed for humans and not by the ones you would design for a machine: it will not appear in an access review as an integration, no one will be asked to re-certify it, and it survives offboarding because there is no person to offboard. It has no MFA factor enrolled, so its access rests entirely on a password — one that is almost certainly stored in a script, a CI variable, or a config file, and has probably never been rotated. It also holds an administrative role, which means a compromise of that stored password is an administrative compromise of the tenant.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the owning team what this account does. If it is a machine identity: assign a named human or team owner in the user profile, enrol MFA if any interactive access is still required, remove any admin role it does not demonstrably need, and plan migration of its workload to an API Service Integration so the credential is scoped and auditable rather than a password on a user object. If it is a shared human account, that is its own finding — split it into individual accounts.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-007</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>Suspected service account holds the Organization Administrator administrative role.</h3>
+  <div class="identity">automation@example.com &nbsp;&middot;&nbsp; 00uAUTOMATION0EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>automation@example.com was assessed as a non-human identity (heuristic score 1.00: login matches service-account naming convention (automation); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 260 API events attributed to this actor) and holds Organization Administrator, assigned 2025-04-08. MFA enrolled: no.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>automation@example.com holds Organization Administrator, which grants the ability to create, modify and deactivate users and groups across the organisation, and to reset credentials. This account shows the behaviour of software rather than a person: it does not sign in interactively, and its credential is therefore stored somewhere — a CI secret, a configuration file, a script, a password manager entry shared across a team. Because no MFA factor is enrolled, that stored credential is the only thing standing between an attacker and this level of access. There is no second factor to fail closed. The privilege is narrower than full tenant control, but the governance gap is the same — an unowned credential with standing administrative access that no access review will ever surface.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Review whether automation@example.com needs Organization Administrator at all. Replace it with a custom admin role scoped to the specific resources and operations the workload performs, assign a named owning team, and add the account to your quarterly access review. Where the workload is API-driven, migrate it to an API Service Integration with least-privilege scopes.</p>
+  </div>
+</div>
+<div class="finding high">
+  <div class="finding-head">
+    <span class="pill high">high</span>
+    <span class="id">NHI-008</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.</h3>
+  <div class="identity">svc-jira@example.com &nbsp;&middot;&nbsp; 00uSVCJIRA0000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>svc-jira@example.com scored 1.00 against a 0.50 threshold. Signals: login matches service-account naming convention (svc-, integration); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 480 API events attributed to this actor. Created 2024-11-27. Admin roles held: Super Administrator.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>svc-jira@example.com is being used by software rather than a person, but it exists in Okta as an ordinary user. That means it is governed by the controls you designed for humans and not by the ones you would design for a machine: it will not appear in an access review as an integration, no one will be asked to re-certify it, and it survives offboarding because there is no person to offboard. It has no MFA factor enrolled, so its access rests entirely on a password — one that is almost certainly stored in a script, a CI variable, or a config file, and has probably never been rotated. It also holds an administrative role, which means a compromise of that stored password is an administrative compromise of the tenant.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the owning team what this account does. If it is a machine identity: assign a named human or team owner in the user profile, enrol MFA if any interactive access is still required, remove any admin role it does not demonstrably need, and plan migration of its workload to an API Service Integration so the credential is scoped and auditable rather than a password on a user object. If it is a shared human account, that is its own finding — split it into individual accounts.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-009</span>
+    <span class="id">Org API token</span>
+  </div>
+  <h3>Long-lived static API token in continuous use — its expiry never takes effect.</h3>
+  <div class="identity">nightly-user-sync &nbsp;&middot;&nbsp; 00Tnightlyjob0000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Token &#39;nightly-user-sync&#39; was created 2024-07-22 (740 days ago) and last used today. Okta&#39;s 30-day expiry runs from last use, so continuous use keeps resetting it.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>This credential has been valid for 740 days and, at the current usage rate, will remain valid forever without anyone re-approving it. It is a static bearer token: whoever holds the string has its full access, there is no MFA, no device binding, and no way to tell a legitimate call from a stolen one. Okta&#39;s own guidance is to prefer scoped OAuth 2.0 service integrations over static API tokens for exactly this reason.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Migrate this workload to an API Service Integration using the client_credentials grant with only the scopes it needs, so access is scoped and short-lived rather than unlimited and permanent. Until then, set a calendar reminder to rotate this token on a fixed schedule and record its owning team.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-010</span>
+    <span class="id">Org API token</span>
+  </div>
+  <h3>API token has never been used since it was created.</h3>
+  <div class="identity">token-2 &nbsp;&middot;&nbsp; 00Tneverused00000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Token &#39;token-2&#39; was created 243 days ago by samir.patel@example.com and shows no use since. Its 30-day window has already lapsed.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>A credential nobody uses is a credential nobody is watching. It represents an unexplained decision — someone needed admin API access and either never shipped the thing, or shipped it somewhere else. Either way the record is now noise that makes real tokens harder to review. Generic names like this one are a sign the token inventory has no ownership model.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the creator that it is unused, then revoke it. Introduce a naming convention that records purpose and owning team, e.g. &#39;terraform-prod-platformteam&#39;, so the next review does not require archaeology.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-011</span>
+    <span class="id">Event / inline hook</span>
+  </div>
+  <h3>Active event hook posts to an external endpoint with no authentication header configured.</h3>
+  <div class="identity">legacy-audit-forwarder &nbsp;&middot;&nbsp; who002EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Hook &#39;legacy-audit-forwarder&#39; (who002EXAMPLE) posts to http://audit-collector.thirdparty-vendor.example.net/ingest with no authScheme set on the channel configuration.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>Without a shared secret in the request, the receiving endpoint has no way to verify that a given payload actually came from your Okta tenant. Anyone who learns the URL can post forged identity events to it. Whatever that endpoint does in response — provision an account, page an on-call engineer, write to a database — can be triggered by a stranger.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Configure an authentication header on the hook and validate it at the receiving endpoint. Rotate the secret on the same schedule as your other credentials.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-012</span>
+    <span class="id">Event / inline hook</span>
+  </div>
+  <h3>Inline hook executes synchronously inside the authentication or token-issuance path.</h3>
+  <div class="identity">token-claim-enrichment &nbsp;&middot;&nbsp; cal001EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Inline hook &#39;token-claim-enrichment&#39; (cal001EXAMPLE) of type &#39;com.okta.oauth2.tokens.transform&#39; is ACTIVE and calls https://claims.internal-tools.example.com/enrich during request processing.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>Unlike an event hook, which is fired and forgotten, an inline hook is called while Okta is deciding something. A token-transform hook can alter the claims placed in an access token; a registration or password-import hook can influence whether a request is allowed. Whoever controls claims.internal-tools.example.com therefore has influence over authorisation decisions in your tenant. There is also an availability consequence: if that endpoint is slow or down, authentication is affected for real users.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm the endpoint is owned by your organisation, not a vendor. Restrict who can deploy to it with the same rigour you apply to identity infrastructure, because that is what it is. Verify the auth header is validated on the receiving side, and monitor its latency and error rate.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-013</span>
+    <span class="id">SCIM provisioning connection</span>
+  </div>
+  <h3>SCIM provisioning creates downstream users but is not configured to deactivate them.</h3>
+  <div class="identity">GitHub Enterprise Cloud &nbsp;&middot;&nbsp; 0oaSCIMGITHUB0EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>&#39;GitHub Enterprise Cloud&#39; (0oaSCIMGITHUB0EXAMPLE) has lifecycleCreate ENABLED and lifecycleDeactivate DISABLED.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>Offboarding is one-directional. When someone leaves, Okta removes their access to GitHub Enterprise Cloud at the front door but their account inside the downstream system stays active. If that system supports any authentication path other than SSO — a local password, a personal access token, an API key they created — the former employee still has access, and nothing in Okta will show it. This is also the finding a SOC 2 auditor is looking for when they ask you to demonstrate timely access removal: the control exists on paper, and does not fully execute.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Enable Deactivate Users: Admin console -&gt; Applications -&gt; GitHub Enterprise Cloud -&gt; Provisioning -&gt; To App -&gt; edit -&gt; enable Deactivate Users. Before enabling, reconcile the existing downstream account list against current Okta users — there is likely a backlog of accounts belonging to people who have already left.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-014</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.</h3>
+  <div class="identity">bot-builds@example.com &nbsp;&middot;&nbsp; 00uBOTBUILD000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>bot-builds@example.com scored 1.00 against a 0.50 threshold. Signals: login matches service-account naming convention (bot-); no MFA factor enrolled; no interactive browser sign-in in the System Log window; 140 API events attributed to this actor. Created 2025-11-24. No admin roles held.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>bot-builds@example.com is being used by software rather than a person, but it exists in Okta as an ordinary user. That means it is governed by the controls you designed for humans and not by the ones you would design for a machine: it will not appear in an access review as an integration, no one will be asked to re-certify it, and it survives offboarding because there is no person to offboard. It has no MFA factor enrolled, so its access rests entirely on a password — one that is almost certainly stored in a script, a CI variable, or a config file, and has probably never been rotated.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the owning team what this account does. If it is a machine identity: assign a named human or team owner in the user profile, enrol MFA if any interactive access is still required, remove any admin role it does not demonstrably need, and plan migration of its workload to an API Service Integration so the credential is scoped and auditable rather than a password on a user object. If it is a shared human account, that is its own finding — split it into individual accounts.</p>
+  </div>
+</div>
+<div class="finding medium">
+  <div class="finding-head">
+    <span class="pill medium">medium</span>
+    <span class="id">NHI-015</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.</h3>
+  <div class="identity">integration-hubspot@example.com &nbsp;&middot;&nbsp; 00uINTHUBSPOT0EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>integration-hubspot@example.com scored 0.70 against a 0.50 threshold. Signals: login matches service-account naming convention (integration); no MFA factor enrolled; 95 API events attributed to this actor. Created 2025-07-02. No admin roles held.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>integration-hubspot@example.com is being used by software rather than a person, but it exists in Okta as an ordinary user. That means it is governed by the controls you designed for humans and not by the ones you would design for a machine: it will not appear in an access review as an integration, no one will be asked to re-certify it, and it survives offboarding because there is no person to offboard. It has no MFA factor enrolled, so its access rests entirely on a password — one that is almost certainly stored in a script, a CI variable, or a config file, and has probably never been rotated.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the owning team what this account does. If it is a machine identity: assign a named human or team owner in the user profile, enrol MFA if any interactive access is still required, remove any admin role it does not demonstrably need, and plan migration of its workload to an API Service Integration so the credential is scoped and auditable rather than a password on a user object. If it is a shared human account, that is its own finding — split it into individual accounts.</p>
+  </div>
+</div>
+<div class="finding low">
+  <div class="finding-head">
+    <span class="pill low">low</span>
+    <span class="id">NHI-016</span>
+    <span class="id">Org API token</span>
+  </div>
+  <h3>API token has been idle 26 days and will expire silently within days.</h3>
+  <div class="identity">adhoc-reporting-script &nbsp;&middot;&nbsp; 00Tstaletoken0000EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Token &#39;adhoc-reporting-script&#39; was last used 26 days ago. Okta expires tokens 30 days after last use, so this one lapses in roughly 4 days.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>This is an availability risk rather than a security one. When the token expires, whatever depends on it starts failing with 401s and no advance warning is sent. Infrequently-run jobs — quarterly reports, disaster-recovery scripts — are the usual casualties, and they fail at the moment you need them.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Decide whether the token is still needed. If it is, move the workload to an API Service Integration, which does not expire on this basis. If it is not, revoke it.</p>
+  </div>
+</div>
+<div class="finding low">
+  <div class="finding-head">
+    <span class="pill low">low</span>
+    <span class="id">NHI-017</span>
+    <span class="id">Event / inline hook</span>
+  </div>
+  <h3>Event hook is ACTIVE but has never completed Okta&#39;s one-time verification handshake.</h3>
+  <div class="identity">legacy-audit-forwarder &nbsp;&middot;&nbsp; who002EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>Hook &#39;legacy-audit-forwarder&#39; (who002EXAMPLE) has verificationStatus UNVERIFIED, created 2025-02-27.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>An unverified hook is one that has probably never successfully delivered. It is most likely an abandoned integration — which matters because it is still configured to receive user data if the endpoint ever comes back, and because the domain it points at could be re-registered by someone else.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Verify it if the integration is still wanted, delete it if not. Confirm the destination domain is still registered to the intended party before verifying.</p>
+  </div>
+</div>
+<div class="finding low">
+  <div class="finding-head">
+    <span class="pill low">low</span>
+    <span class="id">NHI-018</span>
+    <span class="id">API service integration (OAuth)</span>
+  </div>
+  <h3>API service integration is scoped read-only. No over-privilege identified.</h3>
+  <div class="identity">Security Reporting Exporter &nbsp;&middot;&nbsp; 0oaAPISVCRPT00EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>&#39;Security Reporting Exporter&#39; (0oaAPISVCRPT00EXAMPLE) holds only read scopes: okta.logs.read, okta.users.read.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>Low. This integration is configured the way the others should be: OAuth client_credentials rather than a static API token, and read-only scopes. The residual risk is the client secret itself, which is a bearer credential and should be rotated on a schedule and stored in a secrets manager rather than a config file.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>No scope change required. Confirm the client secret is held in a secrets manager, record an owning team, and include it in the quarterly credential rotation cycle. Use this integration as the reference pattern when migrating the static API tokens identified elsewhere in this report.</p>
+  </div>
+</div>
+<div class="finding low">
+  <div class="finding-head">
+    <span class="pill low">low</span>
+    <span class="id">NHI-019</span>
+    <span class="id">SCIM provisioning connection</span>
+  </div>
+  <h3>SCIM provisioning connection holds a standing privileged credential into a downstream system.</h3>
+  <div class="identity">Slack &nbsp;&middot;&nbsp; 0oaSCIMSLACK00EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>&#39;Slack&#39; (0oaSCIMSLACK00EXAMPLE) is ACTIVE with provisioning capabilities: create users, update profiles, deactivate users. Lifecycle create and deactivate are both enabled, which is the correct configuration.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>No misconfiguration identified — this connection is set up the way it should be. It appears here because the Slack provisioning credential is itself a non-human identity that few organisations have inventoried. It holds administrative rights in a downstream SaaS product, it is stored inside Okta, it does not rotate on its own, and it is not covered by any access review that looks at humans.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>No urgent action. Record the connection and its downstream privilege level in your integration inventory, assign an owning team, and add the provisioning credential to your rotation schedule.</p>
+  </div>
+</div>
+<div class="finding low">
+  <div class="finding-head">
+    <span class="pill low">low</span>
+    <span class="id">NHI-020</span>
+    <span class="id">Service account (user object)</span>
+  </div>
+  <h3>User account appears to be a non-human identity operating as a standard user</h3>
+  <div class="identity">svc-backup@example.com &nbsp;&middot;&nbsp; 00uSVCBACKUP00EXAMPLE</div>
+
+  <div class="block evidence">
+    <div class="label">Evidence</div>
+    <p>svc-backup@example.com scored 0.75 against a 0.50 threshold. Signals: login matches service-account naming convention (svc-); no interactive browser sign-in in the System Log window; 31 API events attributed to this actor. Created 2026-02-02. No admin roles held.</p>
+  </div>
+  <div class="block">
+    <div class="label">Business risk</div>
+    <p>svc-backup@example.com is being used by software rather than a person, but it exists in Okta as an ordinary user. That means it is governed by the controls you designed for humans and not by the ones you would design for a machine: it will not appear in an access review as an integration, no one will be asked to re-certify it, and it survives offboarding because there is no person to offboard.</p>
+  </div>
+  <div class="block">
+    <div class="label">Remediation</div>
+    <p>Confirm with the owning team what this account does. If it is a machine identity: assign a named human or team owner in the user profile, enrol MFA if any interactive access is still required, remove any admin role it does not demonstrably need, and plan migration of its workload to an API Service Integration so the credential is scoped and auditable rather than a password on a user object. If it is a shared human account, that is its own finding — split it into individual accounts.</p>
+  </div>
+</div>
+
+<!-- 4 ------------------------------------------------------------------ -->
+<h2>4 &nbsp;&middot;&nbsp; Remediation roadmap</h2>
+
+<p>
+  Sequenced by urgency rather than by effort. Items in the first phase should be
+  treated as incident-adjacent: the exposure exists now and is not mitigated by
+  any compensating control.
+</p>
+
+<div class="roadmap-phase">
+  <div class="phase-head">
+    <span class="pill critical">critical</span>
+    <h3>Immediate containment</h3>
+    <span class="when">Immediate (24 hours)</span>
+  </div>
+  <ol class="actions">
+    <li>terraform-okta-provider — API token is owned by a user account that is no longer active (DEPROVISIONED).<br><span class="who">Revoke immediately: Admin console -&gt; Security -&gt; API -&gt; Tokens -&gt; revoke this token.</span></li>
+    <li>svc-jira@example.com — Suspected service account holds the Super Administrator administrative role.<br><span class="who">Treat as urgent. 1) Determine what svc-jira@example.com actually does by filtering the System Log on this actor over the last 90 days. 2) Identify the minimum role that covers those operations — in nearly all cases a scoped custom admin role, or no admin role at all, is sufficient. 3) Replace the Super Administrator assignment with that scoped role: Admin console -&gt; Security -&gt; Administrators -&gt; select the account -&gt; edit assignments. 4) Migrate the workload to an API Service Integration with explicit scopes, so access is granted to a workload rather than inherited from a user object. 5) Record a named owning team on the account. Do not simply delete the role before step 1 — you will break something and not know what.</span></li>
+  </ol>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-head">
+    <span class="pill high">high</span>
+    <h3>Reduce standing privilege</h3>
+    <span class="when">This month (30 days)</span>
+  </div>
+  <ol class="actions">
+    <li>legacy-audit-forwarder — Active event hook delivers identity data over plaintext HTTP.<br><span class="who">Move the endpoint to HTTPS with a valid certificate and update the hook: Admin console -&gt; Workflow -&gt; Event Hooks -&gt; legacy-audit-forwarder.</span></li>
+    <li>Internal Provisioning Service — API service integration holds tenant-control scopes that are broader than a read-only workload requires.<br><span class="who">Establish what write operations this integration actually performs — filter the System Log on this client_id (0oaAPISVCPROV0EXAMPLE) and look for anything beyond reads.</span></li>
+    <li>Zoom (legacy - migrated off 2025) — SCIM provisioning remains configured on an application that is INACTIVE.<br><span class="who">Retrieve the provisioning credential&#39;s identity from the Zoom (legacy - migrated off 2025) admin console and revoke it there — deactivating the Okta app does not revoke it.</span></li>
+    <li>automation@example.com — User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.<br><span class="who">Confirm with the owning team what this account does.</span></li>
+    <li>automation@example.com — Suspected service account holds the Organization Administrator administrative role.<br><span class="who">Review whether automation@example.com needs Organization Administrator at all.</span></li>
+    <li>svc-jira@example.com — User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.<br><span class="who">Confirm with the owning team what this account does.</span></li>
+  </ol>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-head">
+    <span class="pill medium">medium</span>
+    <h3>Tighten scope and lifecycle</h3>
+    <span class="when">This quarter (90 days)</span>
+  </div>
+  <ol class="actions">
+    <li>nightly-user-sync — Long-lived static API token in continuous use — its expiry never takes effect.<br><span class="who">Migrate this workload to an API Service Integration using the client_credentials grant with only the scopes it needs, so access is scoped and short-lived rather than unlimited and permanent.</span></li>
+    <li>token-2 — API token has never been used since it was created.<br><span class="who">Confirm with the creator that it is unused, then revoke it.</span></li>
+    <li>legacy-audit-forwarder — Active event hook posts to an external endpoint with no authentication header configured.<br><span class="who">Configure an authentication header on the hook and validate it at the receiving endpoint.</span></li>
+    <li>token-claim-enrichment — Inline hook executes synchronously inside the authentication or token-issuance path.<br><span class="who">Confirm the endpoint is owned by your organisation, not a vendor.</span></li>
+    <li>GitHub Enterprise Cloud — SCIM provisioning creates downstream users but is not configured to deactivate them.<br><span class="who">Enable Deactivate Users: Admin console -&gt; Applications -&gt; GitHub Enterprise Cloud -&gt; Provisioning -&gt; To App -&gt; edit -&gt; enable Deactivate Users.</span></li>
+    <li>bot-builds@example.com — User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.<br><span class="who">Confirm with the owning team what this account does.</span></li>
+    <li>integration-hubspot@example.com — User account appears to be a non-human identity operating as a standard user, with no MFA enrolled.<br><span class="who">Confirm with the owning team what this account does.</span></li>
+  </ol>
+</div>
+<div class="roadmap-phase">
+  <div class="phase-head">
+    <span class="pill low">low</span>
+    <h3>Hygiene and inventory</h3>
+    <span class="when">Backlog / next review cycle</span>
+  </div>
+  <ol class="actions">
+    <li>adhoc-reporting-script — API token has been idle 26 days and will expire silently within days.<br><span class="who">Decide whether the token is still needed.</span></li>
+    <li>legacy-audit-forwarder — Event hook is ACTIVE but has never completed Okta&#39;s one-time verification handshake.<br><span class="who">Verify it if the integration is still wanted, delete it if not.</span></li>
+    <li>Security Reporting Exporter — API service integration is scoped read-only. No over-privilege identified.<br><span class="who">No scope change required. Confirm the client secret is held in a secrets manager, record an owning team, and include it in the quarterly credential rotation cycle. Use this integration as the reference pattern when migrating the static API tokens identified elsewhere in this report.</span></li>
+    <li>Slack — SCIM provisioning connection holds a standing privileged credential into a downstream system.<br><span class="who">No urgent action. Record the connection and its downstream privilege level in your integration inventory, assign an owning team, and add the provisioning credential to your rotation schedule.</span></li>
+    <li>svc-backup@example.com — User account appears to be a non-human identity operating as a standard user<br><span class="who">Confirm with the owning team what this account does.</span></li>
+  </ol>
+</div>
+
+<h3>Structural recommendations</h3>
+<p>
+  The individual findings above are symptoms. These address the conditions that
+  produced them, and are what stops the same report being true again next year.
+</p>
+<ul class="plain">
+  <li><strong>Give every non-human identity a named owning team.</strong> The
+      recurring feature of the findings in this report is not excessive
+      privilege — it is absent ownership. Okta has no owner field for tokens,
+      hooks or service apps, so this must be maintained deliberately, in a naming
+      convention or an external register.</li>
+  <li><strong>Add credential revocation to offboarding.</strong> Deactivating a
+      user does not revoke the API tokens they created, and those tokens keep
+      their original privileges. Offboarding should explicitly check for tokens,
+      hooks and service accounts associated with the departing person.</li>
+  <li><strong>Prefer API service integrations over static API tokens.</strong>
+      This is Okta's own guidance. Scoped OAuth credentials can be granted narrow
+      permissions and reasoned about; a static API token silently inherits
+      whatever its creator had.</li>
+  <li><strong>Include non-human identities in access reviews.</strong> Quarterly
+      reviews almost always cover employees only. Service accounts and
+      integrations accumulate precisely because nothing forces anyone to
+      re-justify them.</li>
+</ul>
+
+<!-- 5 ------------------------------------------------------------------ -->
+<h2>5 &nbsp;&middot;&nbsp; Methodology, scope and limitations</h2>
+
+<div class="method-grid">
+  <div class="method-col">
+    <h3>What was examined</h3>
+    <ul class="plain">
+<li>Org API tokens: owner, creation date, last use, expiry posture</li><li>API service integrations using the OAuth client_credentials grant, and their granted scopes</li><li>User objects assessed as probable service accounts</li><li>Administrative role assignments held by those accounts</li><li>Event hooks and inline hooks, including destination and authentication configuration</li><li>SCIM provisioning connections and their downstream lifecycle capabilities</li>    </ul>
+  </div>
+  <div class="method-col">
+    <h3>What was not examined</h3>
+    <ul class="plain">
+<li>Human user hygiene: stale accounts, MFA coverage, password policy</li><li>Credentials held in CI/CD systems (GitHub Actions, CircleCI, Jenkins)</li><li>Cloud IAM roles, access keys and workload identities (AWS, GCP, Azure)</li><li>Secrets committed to source control repositories</li><li>API keys created directly inside downstream SaaS applications</li><li>Okta Workflows connections and their stored credentials</li><li>Penetration testing or exploitation of any kind</li>    </ul>
+  </div>
+</div>
+
+<h3>Access and method</h3>
+<p>
+  This assessment was performed with read-only API access to the Okta tenant.
+  The tool used issues HTTP GET requests exclusively; no create, update or delete
+  operation exists anywhere in its codebase. No configuration was changed, no
+  credential was rotated, and no user was notified. Destination endpoints
+  referenced by hooks were catalogued from configuration and were
+  <em>not</em> contacted &mdash; probing a client's third-party endpoints is a
+  side effect an audit should not have.
+</p>
+
+<h3>Severity definitions</h3>
+<table>
+  <thead><tr><th>Severity</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="pill critical">critical</span></td>
+      <td>Exploitable now, with org-wide blast radius. A credential that grants administrative control and is not tied to an accountable human. Remediate within 24 hours.</td>
+    </tr>
+    <tr>
+      <td><span class="pill high">high</span></td>
+      <td>Meaningful privilege held by an identity with weak or absent controls, or a credential whose owner cannot be established. Remediate within 30 days.</td>
+    </tr>
+    <tr>
+      <td><span class="pill medium">medium</span></td>
+      <td>A control gap or over-provisioning that does not by itself grant escalation, but widens the blast radius if the identity is compromised. Remediate this quarter.</td>
+    </tr>
+    <tr>
+      <td><span class="pill low">low</span></td>
+      <td>Hygiene and operational risk: unused credentials, missing ownership metadata, configuration that will cause an outage rather than a breach.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Limitations</h3>
+<ul class="plain">
+  <li><strong>Service-account detection is probabilistic.</strong> Okta has no
+      field marking an account as non-human. Accounts were scored against four
+      signals &mdash; naming convention, absence of enrolled MFA, absence of
+      interactive sign-in, and presence of API activity &mdash; and reported
+      above a threshold of 0.50. Shared human accounts (a team
+      mailbox, a training login) can score highly and be false positives. A
+      machine identity named like a person, or one whose credential a human
+      occasionally uses in a browser, will be missed. Each finding lists the
+      signals it matched so individual determinations can be contested.</li>
+  <li><strong>Activity signals depend on System Log retention.</strong>
+      "No interactive sign-in" means none within the retained log window, not
+      none ever.</li>
+  <li><strong>Point-in-time.</strong> This reflects tenant configuration as of
+      02 August 2026, 00:25 UTC. It is not a continuous control.</li>
+</ul>
+
+<h3>Suggested next scope</h3>
+<p>
+  Non-human identity does not stop at the identity provider. The categories
+  excluded above &mdash; credentials in CI/CD systems, cloud IAM roles and access
+  keys, secrets committed to source control, and API keys held directly inside
+  SaaS applications &mdash; typically outnumber those in Okta by a wide margin
+  and are subject to the same absence of ownership. Extending the inventory to
+  those systems is the natural follow-on to this engagement.
+</p>
+
+<footer>
+  Generated by <strong>okta-nhi-audit-tool</strong> &mdash; read-only Okta
+  non-human identity assessment.<br>
+  02 August 2026, 00:25 UTC &middot; demonstration data</footer>
+
+</div>
+</body>
+</html>

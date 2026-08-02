@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- okta-nhi-audit-tool ----
+# Real secrets. .env.example is committed; .env never is.
+.env
+.env.*
+!.env.example
+
+# Generated reports may contain real client tenant data.
+# The committed sample report is force-added: git add -f reports/sample_report.html
+reports/*.html
+!reports/sample_report.html
+reports/*.csv
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*

@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Demo pipeline produces a report with no setup
+        run: |
+          python -m src.audit --demo --format all --output /tmp/ci_report
+          test -s /tmp/ci_report.html
+          test -s /tmp/ci_report.csv
+          grep -q "Non-Human Identity Assessment" /tmp/ci_report.html
+
+  read-only-guarantee:
+    # The README claims this codebase cannot modify an Okta tenant. That claim
+    # is enforced here rather than trusted, so it cannot quietly stop being true.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No HTTP write verbs in src/
+        run: |
+          if grep -rnE '(session|requests)\s*\.\s*(post|put|patch|delete)\s*\(' src/; then
+            echo "::error::Write operation found in src/. This tool is read-only by design."
+            exit 1
+          fi
+          echo "OK - no write operations in src/"
+
+      - name: Seeding script is isolated from the audit package
+        run: |
+          if grep -rn 'seed_tenant' src/; then
+            echo "::error::src/ must not import the seeding script - it performs writes."
+            exit 1
+          fi
+          echo "OK - seeding script is not reachable from src/"
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: No Okta API token committed anywhere in history
+        run: |
+          # Okta API tokens start with "00" followed by ~40 chars of base64url.
+          # The fixtures deliberately contain "00u.../00T..." object IDs, which
+          # are public identifiers, so the pattern requires token-like length
+          # and excludes the EXAMPLE suffix used throughout the fixtures.
+          if git log -p --all \
+            | grep -nE '00[A-Za-z0-9_-]{40,}' \
+            | grep -v 'EXAMPLE' ; then
+            echo "::error::Possible Okta API token found in git history."
+            exit 1
+          fi
+          echo "OK - no token-shaped strings in history"
+
+      - name: .env is not tracked
+        run: |
+          if git ls-files --error-unmatch .env 2>/dev/null; then
+            echo "::error::.env is tracked by git."
+            exit 1
+          fi
+          echo "OK - .env is not tracked"

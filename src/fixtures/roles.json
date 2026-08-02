@@ -1,0 +1,42 @@
+{
+  "00uSVCJIRA0000EXAMPLE": [
+    {
+      "id": "ra001EXAMPLE",
+      "label": "Super Administrator",
+      "type": "SUPER_ADMIN",
+      "status": "ACTIVE",
+      "created": "2024-11-29T12:00:00.000Z",
+      "assignmentType": "USER"
+    }
+  ],
+  "00uAUTOMATION0EXAMPLE": [
+    {
+      "id": "ra002EXAMPLE",
+      "label": "Organization Administrator",
+      "type": "ORG_ADMIN",
+      "status": "ACTIVE",
+      "created": "2025-04-08T12:00:00.000Z",
+      "assignmentType": "USER"
+    }
+  ],
+  "00uHUMAN0000EXAMPLE": [
+    {
+      "id": "ra003EXAMPLE",
+      "label": "Super Administrator",
+      "type": "SUPER_ADMIN",
+      "status": "ACTIVE",
+      "created": "2024-03-04T12:00:00.000Z",
+      "assignmentType": "USER"
+    }
+  ],
+  "00uHUMAN0003EXAMPLE": [
+    {
+      "id": "ra004EXAMPLE",
+      "label": "Read Only Administrator",
+      "type": "READ_ONLY_ADMIN",
+      "status": "ACTIVE",
+      "created": "2025-10-05T12:00:00.000Z",
+      "assignmentType": "USER"
+    }
+  ]
+}

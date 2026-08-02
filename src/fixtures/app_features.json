@@ -1,0 +1,77 @@
+{
+  "0oaSCIMSLACK00EXAMPLE": [
+    {
+      "name": "USER_PROVISIONING",
+      "status": "ENABLED",
+      "description": "User provisioning",
+      "capabilities": {
+        "create": {
+          "lifecycleCreate": {
+            "status": "ENABLED"
+          }
+        },
+        "update": {
+          "profile": {
+            "status": "ENABLED"
+          },
+          "lifecycleDeactivate": {
+            "status": "ENABLED"
+          },
+          "password": {
+            "status": "DISABLED"
+          }
+        }
+      }
+    }
+  ],
+  "0oaSCIMGITHUB0EXAMPLE": [
+    {
+      "name": "USER_PROVISIONING",
+      "status": "ENABLED",
+      "description": "User provisioning",
+      "capabilities": {
+        "create": {
+          "lifecycleCreate": {
+            "status": "ENABLED"
+          }
+        },
+        "update": {
+          "profile": {
+            "status": "ENABLED"
+          },
+          "lifecycleDeactivate": {
+            "status": "DISABLED"
+          },
+          "password": {
+            "status": "DISABLED"
+          }
+        }
+      }
+    }
+  ],
+  "0oaSCIMZOOM000EXAMPLE": [
+    {
+      "name": "USER_PROVISIONING",
+      "status": "ENABLED",
+      "description": "User provisioning",
+      "capabilities": {
+        "create": {
+          "lifecycleCreate": {
+            "status": "ENABLED"
+          }
+        },
+        "update": {
+          "profile": {
+            "status": "ENABLED"
+          },
+          "lifecycleDeactivate": {
+            "status": "ENABLED"
+          },
+          "password": {
+            "status": "DISABLED"
+          }
+        }
+      }
+    }
+  ]
+}

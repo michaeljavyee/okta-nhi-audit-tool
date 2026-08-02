@@ -1,0 +1,207 @@
+{
+  "00uHUMAN0000EXAMPLE": [
+    {
+      "id": "ostf0000EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0001EXAMPLE": [
+    {
+      "id": "ostf0001EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0002EXAMPLE": [
+    {
+      "id": "ostf0002EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0003EXAMPLE": [
+    {
+      "id": "ostf0003EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0004EXAMPLE": [
+    {
+      "id": "ostf0004EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0005EXAMPLE": [
+    {
+      "id": "ostf0005EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0006EXAMPLE": [
+    {
+      "id": "ostf0006EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0007EXAMPLE": [
+    {
+      "id": "ostf0007EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0008EXAMPLE": [
+    {
+      "id": "ostf0008EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0009EXAMPLE": [
+    {
+      "id": "ostf0009EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0010EXAMPLE": [
+    {
+      "id": "ostf0010EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0011EXAMPLE": [
+    {
+      "id": "ostf0011EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0012EXAMPLE": [
+    {
+      "id": "ostf0012EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0013EXAMPLE": [
+    {
+      "id": "ostf0013EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0014EXAMPLE": [
+    {
+      "id": "ostf0014EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0015EXAMPLE": [
+    {
+      "id": "ostf0015EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0016EXAMPLE": [
+    {
+      "id": "ostf0016EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0017EXAMPLE": [
+    {
+      "id": "ostf0017EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0018EXAMPLE": [
+    {
+      "id": "ostf0018EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0019EXAMPLE": [
+    {
+      "id": "ostf0019EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0020EXAMPLE": [
+    {
+      "id": "ostf0020EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0021EXAMPLE": [
+    {
+      "id": "ostf0021EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0022EXAMPLE": [],
+  "00uHUMAN0023EXAMPLE": [
+    {
+      "id": "ostf0023EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uHUMAN0024EXAMPLE": [
+    {
+      "id": "ostf0024EXAMPLE",
+      "factorType": "push",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ],
+  "00uSVCJIRA0000EXAMPLE": [],
+  "00uAUTOMATION0EXAMPLE": [],
+  "00uINTHUBSPOT0EXAMPLE": [],
+  "00uBOTBUILD000EXAMPLE": [],
+  "00uSVCBACKUP00EXAMPLE": [
+    {
+      "id": "ostfBACKUPEXAMPLE",
+      "factorType": "token:software:totp",
+      "provider": "OKTA",
+      "status": "ACTIVE"
+    }
+  ]
+}

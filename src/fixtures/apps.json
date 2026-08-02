@@ -1,0 +1,100 @@
+[
+  {
+    "id": "0oaAPISVCPROV0EXAMPLE",
+    "name": "oidc_client",
+    "label": "Internal Provisioning Service",
+    "status": "ACTIVE",
+    "created": "2025-10-05T12:00:00.000Z",
+    "lastUpdated": "2026-05-03T12:00:00.000Z",
+    "signOnMode": "OPENID_CONNECT",
+    "credentials": {
+      "oauthClient": {
+        "client_id": "0oaAPISVCPROV0EXAMPLE"
+      }
+    },
+    "settings": {
+      "oauthClient": {
+        "grant_types": [
+          "client_credentials"
+        ],
+        "application_type": "service",
+        "response_types": [
+          "token"
+        ]
+      }
+    }
+  },
+  {
+    "id": "0oaAPISVCRPT00EXAMPLE",
+    "name": "oidc_client",
+    "label": "Security Reporting Exporter",
+    "status": "ACTIVE",
+    "created": "2026-04-03T12:00:00.000Z",
+    "lastUpdated": "2026-06-02T12:00:00.000Z",
+    "signOnMode": "OPENID_CONNECT",
+    "credentials": {
+      "oauthClient": {
+        "client_id": "0oaAPISVCRPT00EXAMPLE"
+      }
+    },
+    "settings": {
+      "oauthClient": {
+        "grant_types": [
+          "client_credentials"
+        ],
+        "application_type": "service",
+        "response_types": [
+          "token"
+        ]
+      }
+    }
+  },
+  {
+    "id": "0oaSCIMSLACK00EXAMPLE",
+    "name": "slack",
+    "label": "Slack",
+    "status": "ACTIVE",
+    "created": "2024-08-31T12:00:00.000Z",
+    "lastUpdated": "2026-01-03T12:00:00.000Z",
+    "signOnMode": "SAML_2_0",
+    "settings": {
+      "app": {}
+    }
+  },
+  {
+    "id": "0oaSCIMGITHUB0EXAMPLE",
+    "name": "github",
+    "label": "GitHub Enterprise Cloud",
+    "status": "ACTIVE",
+    "created": "2024-10-30T12:00:00.000Z",
+    "lastUpdated": "2025-05-28T12:00:00.000Z",
+    "signOnMode": "SAML_2_0",
+    "settings": {
+      "app": {}
+    }
+  },
+  {
+    "id": "0oaSCIMZOOM000EXAMPLE",
+    "name": "zoom",
+    "label": "Zoom (legacy - migrated off 2025)",
+    "status": "INACTIVE",
+    "created": "2024-05-23T12:00:00.000Z",
+    "lastUpdated": "2025-02-27T12:00:00.000Z",
+    "signOnMode": "SAML_2_0",
+    "settings": {
+      "app": {}
+    }
+  },
+  {
+    "id": "0oaSAMLNOTION0EXAMPLE",
+    "name": "notion",
+    "label": "Notion",
+    "status": "ACTIVE",
+    "created": "2025-06-17T12:00:00.000Z",
+    "lastUpdated": "2026-01-13T12:00:00.000Z",
+    "signOnMode": "SAML_2_0",
+    "settings": {
+      "app": {}
+    }
+  }
+]

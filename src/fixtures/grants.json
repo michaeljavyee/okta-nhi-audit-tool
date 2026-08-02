@@ -1,0 +1,41 @@
+{
+  "0oaAPISVCPROV0EXAMPLE": [
+    {
+      "id": "oag001EXAMPLE",
+      "scopeId": "okta.users.manage",
+      "issuer": "https://dev-00000000.okta.com",
+      "status": "ACTIVE",
+      "created": "2025-10-05T12:00:00.000Z"
+    },
+    {
+      "id": "oag002EXAMPLE",
+      "scopeId": "okta.groups.manage",
+      "issuer": "https://dev-00000000.okta.com",
+      "status": "ACTIVE",
+      "created": "2025-10-05T12:00:00.000Z"
+    },
+    {
+      "id": "oag003EXAMPLE",
+      "scopeId": "okta.apps.read",
+      "issuer": "https://dev-00000000.okta.com",
+      "status": "ACTIVE",
+      "created": "2025-10-05T12:00:00.000Z"
+    }
+  ],
+  "0oaAPISVCRPT00EXAMPLE": [
+    {
+      "id": "oag004EXAMPLE",
+      "scopeId": "okta.logs.read",
+      "issuer": "https://dev-00000000.okta.com",
+      "status": "ACTIVE",
+      "created": "2026-04-03T12:00:00.000Z"
+    },
+    {
+      "id": "oag005EXAMPLE",
+      "scopeId": "okta.users.read",
+      "issuer": "https://dev-00000000.okta.com",
+      "status": "ACTIVE",
+      "created": "2026-04-03T12:00:00.000Z"
+    }
+  ]
+}
