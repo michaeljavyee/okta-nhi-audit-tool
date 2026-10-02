@@ -68,9 +68,9 @@ def run(context: TenantContext) -> Tuple[List[Finding], List[InventoryItem]]:
         creator_login = token.get("username") or context.user_login(creator_id)
         creator_status = context.user_status(creator_id)
 
-        idle_days = days_since(token.get("lastUpdated"))
-        created_days = days_since(token.get("created"))
-        expiry_days = days_until(token.get("expiresAt"))
+        idle_days = days_since(token.get("lastUpdated"), now=context.now)
+        created_days = days_since(token.get("created"), now=context.now)
+        expiry_days = days_until(token.get("expiresAt"), now=context.now)
 
         inventory.append(
             InventoryItem(

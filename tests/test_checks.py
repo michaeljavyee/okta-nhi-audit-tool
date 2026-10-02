@@ -342,3 +342,32 @@ def test_demo_and_real_clients_share_the_same_interface():
                 "verify_connection", "close"}
     assert required <= set(dir(DemoClient))
     assert required <= set(dir(OktaClient))
+
+
+def test_demo_findings_do_not_depend_on_todays_date(monkeypatch):
+    """The demo is pinned to the fixtures' generation date.
+
+    Without this, findings like "used continuously" turned into "idle" a few
+    weeks after the fixtures were generated, and the suite failed on dates
+    alone.
+    """
+    from datetime import datetime, timedelta, timezone
+    import src.scoring as scoring
+
+    real_datetime = scoring.datetime
+
+    def clock_at(when):
+        class Frozen(real_datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return when
+        return Frozen
+
+    def run_at(when):
+        monkeypatch.setattr(scoring, "datetime", clock_at(when))
+        findings, _ = api_tokens.run(TenantContext(DemoClient(), demo=True))
+        return [(f.identity, f.severity, f.finding) for f in findings]
+
+    # The day after the fixtures were generated vs. years later.
+    assert run_at(real_datetime(2026, 8, 2, tzinfo=timezone.utc)) == \
+           run_at(real_datetime(2030, 1, 1, tzinfo=timezone.utc))

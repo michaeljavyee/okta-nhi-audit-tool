@@ -15,11 +15,19 @@ real logic rather than a parallel implementation that can drift out of sync.
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 import re
 from pathlib import Path
 from typing import Any, Dict, Iterator, List, Optional
 
 FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures"
+
+# The instant the fixtures were generated against (scripts/generate_fixtures.py
+# NOW). Ages like "last used 3 days ago" are computed from this in demo mode,
+# not from the wall clock, so the demo tenant doesn't age: without it, a token
+# "used yesterday" in August is "idle 60 days" by October and the report
+# silently changes.
+FIXTURE_REFERENCE_TIME = datetime(2026, 8, 1, 12, 0, 0, tzinfo=timezone.utc)
 
 
 class DemoClient:
@@ -33,6 +41,7 @@ class DemoClient:
                 "  Regenerate it with: python scripts/generate_fixtures.py"
             )
         self.org_url = "https://dev-00000000.okta.com"
+        self.reference_time = FIXTURE_REFERENCE_TIME
         self._cache: Dict[str, Any] = {}
 
     # ---------------------------------------------------------------- internals

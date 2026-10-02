@@ -51,6 +51,9 @@ class TenantContext:
         self.client = client
         self.demo = demo
         self.scope_limitations: List[str] = []
+        # None means "now". DemoClient pins it to the fixtures' generation
+        # date so the demo report is the same whenever it's run.
+        self.now = getattr(client, "reference_time", None)
 
         self._users: Optional[List[Dict[str, Any]]] = None
         self._apps: Optional[List[Dict[str, Any]]] = None
