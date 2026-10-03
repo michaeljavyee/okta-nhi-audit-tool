@@ -10,7 +10,7 @@ entries are dangerous.
 
 ![Report summary](images/report-summary.png)
 
-**[View the sample report →](reports/sample_report.html)**
+**[View the sample report →](https://michaeljavyee.github.io/okta-nhi-audit-tool/reports/sample_report.html)**
 
 ## Try it with zero setup
 
@@ -56,6 +56,49 @@ Full write-up: [`docs/nhi-taxonomy.md`](docs/nhi-taxonomy.md).
   scoping API service integrations, not against an opinion of ours.
 - **Severity is assigned by stated rules, not computed from summed weights.** The
   reasoning is in [`docs/scoring-methodology.md`](docs/scoring-methodology.md).
+
+## How this fits with my other work
+
+Three repos, one idea: **the system reported success and left something behind.**
+
+An Okta API token created by a departing engineer is the clearest case. The
+offboarding script suspends the account, Okta returns `200`, the ticket closes —
+and the token keeps authenticating, with the privileges its creator held on the
+day it was issued. Nothing errored. Nothing alerted. The gap is only visible if
+you go back and look.
+
+That's the same failure the other two repos chase in different systems:
+
+```mermaid
+flowchart LR
+    subgraph Identity
+        A["it-onboarding-automation<br/>verify at the moment of change"]
+        B["okta-nhi-audit-tool<br/>find what was already missed"]
+        C["Workflows remediation<br/><i>not built yet</i>"]
+        A --> B
+        B -.-> C
+        C -.-> A
+    end
+    subgraph Network
+        D["meraki-config-auditor<br/>declared baseline vs live config"]
+    end
+    style C stroke-dasharray: 5 5
+```
+
+| Repo | Catches | The lie it doesn't believe |
+|---|---|---|
+| [it-onboarding-automation](https://github.com/michaeljavyee/it-onboarding-automation) | Leaver actions that returned success but didn't take effect | "HTTP 200 means it happened" |
+| **okta-nhi-audit-tool** (this repo) | Machine identities no access review has ever covered | "We review access quarterly" |
+| [meraki-config-auditor](https://github.com/michaeljavyee/meraki-config-auditor) | Config drift between declared intent and live network state | "Dashboard shows the switch green" |
+
+`it-onboarding-automation` surfaces an orphaned token at the moment of
+departure; this repo finds the ones that were already missed. Same finding, two
+different places to stand.
+
+**The honest gap:** detection without remediation is a report nobody acts on.
+The dotted arrow above is Okta Workflows — consume these findings, notify the
+owner, open a ticket, revoke after a grace period. I haven't built it yet. It's
+the next thing, and it's where this stops being three tools and becomes a loop.
 
 ## The report is the deliverable
 
